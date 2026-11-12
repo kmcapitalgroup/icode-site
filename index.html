@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>iCode — Code partout. Vraiment.</title>
+  <meta name="description" content="iCode est un vrai IDE natif et un client Git pour iPhone, iPhone pliable et iPad : autocomplétion, navigation dans le code, Git façon GitHub Desktop. L’IA est en option, avec la clé du fournisseur de ton choix.">
+  <meta name="theme-color" content="#05070C">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/icone.png">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="iCode — Code partout. Vraiment.">
+  <meta property="og:description" content="Un vrai IDE natif et un client Git pour iPhone et iPad. L’IA si tu veux, avec ta clé.">
+  <meta property="og:image" content="https://kmcapitalgroup.github.io/icode-site/assets/partage.jpg">
+  <meta property="og:locale" content="fr_FR">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="alternate" hreflang="fr" href="https://kmcapitalgroup.github.io/icode-site/">
+  <link rel="alternate" hreflang="en" href="https://kmcapitalgroup.github.io/icode-site/en/">
+  <link rel="alternate" hreflang="x-default" href="https://kmcapitalgroup.github.io/icode-site/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="assets/style.css">
+  <script>
+    document.documentElement.classList.add('js');
+    // Visiteur sans français dans ses langues : version anglaise, sauf choix explicite.
+    try {
+      if (!localStorage.getItem('icode-lang') && !(navigator.languages || [navigator.language]).some(function (l) { return /^fr/i.test(l); })) location.replace('en/' + location.hash);
+    } catch (e) {}
+  </script>
+</head>
+<body>
+<div class="backdrop" aria-hidden="true"><span class="orb o1"></span><span class="orb o2"></span><span class="orb o3"></span></div>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="assets/icone.png" alt="" width="30" height="30">iCode</a>
+    <nav class="nav-links" aria-label="Sections">
+      <a href="#ide">L’éditeur</a>
+      <a href="#git">Git</a>
+      <a href="#ia">IA</a>
+      <a href="#ios">iOS 26</a>
+      <a href="#tarifs">Tarifs</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="lang" onclick="try{localStorage.setItem('icode-lang','en')}catch(e){}" href="en/" hreflang="en" lang="en" title="English"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9s1.3-6.3 3.8-9z"/></svg>EN</a>
+    <a class="btn btn-primary btn-sm" href="#tarifs">Rejoindre la bêta</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="wrap">
+      <img class="hero-icon" src="assets/icone.png" alt="Icône d’iCode" width="112" height="112">
+      <div><span class="pill"><b>NOUVEAU</b>Interface Liquid Glass pour iPhone, iPad et pliables</span></div>
+      <h1>Code partout.<br><span class="gradient-text">Vraiment.</span></h1>
+      <p class="lead">L’éditeur de code natif, écrit en Swift, pensé pour être le plus rapide sur iPhone et iPad. Le code prend tout l’écran, les erreurs s’affichent pendant que tu tapes et Git est intégré. L’IA est en option, avec le fournisseur de ton choix.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#tarifs">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.68c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.48.83-.72 0-1.82-.81-3-.79-1.54.02-2.97.9-3.76 2.28-1.6 2.78-.41 6.9 1.15 9.16.76 1.1 1.67 2.34 2.86 2.3 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.77.74 2.98.72 1.23-.02 2.01-1.12 2.76-2.23.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.4-.92-2.42-3.65zM14.1 5.9c.63-.77 1.06-1.83.94-2.9-.91.04-2.02.61-2.67 1.37-.58.68-1.1 1.77-.96 2.81 1.02.08 2.06-.52 2.69-1.28z"/></svg>
+          Bientôt sur l’App Store
+        </a>
+        <a class="btn btn-ghost" href="#ide">Voir l’éditeur</a>
+      </div>
+      <p class="hero-note">100 % natif SwiftUI · Fonctionne hors ligne · Aucun compte iCode</p>
+
+      <div class="stage" id="stage">
+        <div class="ipad">
+          <div class="ipad-screen">
+            <div class="demo" id="demo" role="img" aria-label="Démo animée d’iCode : on écrit une fonction avec l’autocomplétion, puis on commit et on pousse les changements avec le panneau Git">
+              <noscript><img src="assets/maquettes/ipad-editeur.webp" alt="L’éditeur iCode sur iPad"></noscript>
+            </div>
+          </div>
+        </div>
+        <div class="iphone"><img src="assets/maquettes/iphone-editeur.webp" width="780" height="1688" alt="iCode sur iPhone : le code plein écran, la complétion et la pastille d’état"></div>
+      </div>
+
+      <div class="stats reveal">
+        <div class="stat"><strong data-count="30">30+</strong><span>raccourcis clavier</span></div>
+        <div class="stat"><strong data-count="9">9</strong><span>langages colorés et analysés</span></div>
+        <div class="stat"><strong data-count="6">6</strong><span>fournisseurs d’IA au choix</span></div>
+        <div class="stat"><strong>0</strong><span>serveur iCode entre toi et ton code</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Un vrai IDE -->
+  <section id="ide">
+    <div class="wrap">
+      <div class="section-head center reveal">
+        <span class="eyebrow">Un vrai IDE</span>
+        <h2>Rapide. Connecté.<br><span class="gradient-text">Il t’aide à coder.</span></h2>
+        <p class="lead">Tout ce que tu attends de JetBrains ou de VS Code, réécrit en Swift pour iPhone et iPad, sans web view entre toi et ton code.</p>
+      </div>
+      <div class="grid-3">
+        <article class="card reveal">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></div>
+          <h3>La vitesse du natif</h3>
+          <p>Swift, SwiftUI et le moteur de texte d’iOS. L’éditeur s’ouvre tout de suite et défile sans à-coups, même sur un gros fichier.</p>
+        </article>
+        <article class="card reveal">
+          <div class="icon orange"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4l9 16H3z"/><path d="M12 10v5M12 17.5v.5"/></svg></div>
+          <h3>Les erreurs en direct</h3>
+          <p>Les problèmes sont soulignés pendant que tu tapes, expliqués à côté de la ligne et regroupés dans un panneau. Un tap, et tu es dessus.</p>
+        </article>
+        <article class="card reveal">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h10M4 12h16M4 18h7"/><path d="m17 15 3 3-3 3"/></svg></div>
+          <h3>Autocomplétion intelligente</h3>
+          <p>Symboles du fichier et du projet, propriétés, mots-clés, snippets. Elle s’ouvre toute seule et se valide d’une touche.</p>
+        </article>
+        <article class="card reveal">
+          <div class="icon cyan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-4 3 4 3M16 9l4 3-4 3M14 5l-4 14"/></svg></div>
+          <h3>Le langage détecté</h3>
+          <p>iCode reconnaît le langage de chaque fichier et adapte la coloration, la complétion et les diagnostics. Swift, JavaScript, TypeScript, Python, HTML, CSS et plus.</p>
+        </article>
+        <article class="card reveal">
+          <div class="icon violet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></div>
+          <h3>Navigation et refactoring</h3>
+          <p>Aller à la définition, trouver les usages, aller au symbole, renommer dans tout le projet, rechercher et remplacer partout.</p>
+        </article>
+        <article class="card reveal">
+          <div class="icon green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="5" r="2"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="8" r="2"/><path d="M6 7v10M18 10c0 4-6 3-6 7"/></svg></div>
+          <h3>Toujours connecté</h3>
+          <p>Clone, pull et push vers GitHub, GitLab ou ton serveur, aperçu web en direct, et l’IA de ton choix branchée avec ta clé.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fonctionnalités détaillées -->
+  <section class="alt">
+    <div class="wrap">
+      <div class="feature">
+        <div class="feature-text reveal">
+          <span class="eyebrow">Nouvelle interface</span>
+          <h2>Le code prend<br>tout l’écran.</h2>
+          <p class="lead">Barre latérale, onglets et actions flottent en Liquid Glass au-dessus de ton code, qui défile dessous. Rien ne te cache ce que tu écris.</p>
+          <ul class="checks">
+            <li>Une seule action principale, toujours au même endroit</li>
+            <li>La branche, les problèmes et la position dans une pastille d’état</li>
+            <li>Chaque couleur a un sens : bleu pour agir, orange modifié, vert ajouté, rouge supprimé</li>
+          </ul>
+        </div>
+        <div class="device-shot reveal"><div class="tablet land"><img src="assets/maquettes/ipad-editeur.webp" width="1600" height="1118" loading="lazy" alt="iCode sur iPad : code plein écran, barre latérale de fichiers en verre, complétion et avertissement en ligne"></div></div>
+      </div>
+
+      <div class="feature reverse">
+        <div class="feature-text reveal">
+          <span class="eyebrow">Aide au développement</span>
+          <h2>Il voit l’erreur<br>avant toi.</h2>
+          <p class="lead">Une variable jamais lue, un nom mal tapé, une parenthèse en trop : iCode le souligne pendant que tu tapes et te dit pourquoi, sur la ligne même.</p>
+          <ul class="checks">
+            <li>Diagnostics en direct et panneau Problèmes <kbd>⌘</kbd><kbd>⇧</kbd><kbd>M</kbd></li>
+            <li>Complétion qui connaît les types de ton projet</li>
+            <li>Rechercher partout <kbd>⌘</kbd><kbd>P</kbd> et palette de commandes <kbd>⌘</kbd><kbd>⇧</kbd><kbd>P</kbd></li>
+          </ul>
+        </div>
+        <div class="device-shot reveal"><div class="phone"><img src="assets/maquettes/iphone-editeur.webp" width="780" height="1688" loading="lazy" alt="iCode sur iPhone : complétion, avertissement et pastille d’état"></div></div>
+      </div>
+
+      <div class="feature">
+        <div class="feature-text reveal">
+          <span class="eyebrow">Aperçu et assistant</span>
+          <h2>Ton code à gauche.<br>Le résultat à droite.</h2>
+          <p class="lead">L’aperçu web se met à jour à chaque frappe. Demande un changement à l’assistant : il modifie tes fichiers, tu gardes ou tu refuses.</p>
+          <ul class="checks">
+            <li>Aperçu en direct de tes pages HTML, CSS et JavaScript</li>
+            <li>Lignes ajoutées par l’assistant visibles en vert dans l’éditeur</li>
+            <li>Garder ou Refuser, fichier par fichier</li>
+          </ul>
+        </div>
+        <div class="device-shot reveal"><div class="tablet land"><img src="assets/maquettes/ipad-apercu.webp" width="1600" height="1118" loading="lazy" alt="iCode sur iPad : code, aperçu web d’une boutique et assistant avec les boutons Garder et Refuser"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Clavier -->
+  <section id="clavier">
+    <div class="wrap">
+      <div class="section-head center reveal">
+        <span class="eyebrow">Magic Keyboard</span>
+        <h2>Tes raccourcis.<br><span class="gradient-text">Tes réflexes.</span></h2>
+        <p class="lead">Branche un clavier sur ton iPad et retrouve les raccourcis de JetBrains et VS Code. Maintiens <kbd>⌘</kbd> pour tous les voir.</p>
+      </div>
+      <div class="keybar reveal" aria-label="Barre de touches de code au-dessus du clavier logiciel">
+        <kbd>⇥</kbd><kbd>{</kbd><kbd>}</kbd><kbd>(</kbd><kbd>)</kbd><kbd>[</kbd><kbd>]</kbd><kbd>=</kbd><kbd>"</kbd><kbd>;</kbd><kbd>&lt;</kbd><kbd>&gt;</kbd><kbd>/</kbd><kbd>←</kbd><kbd>→</kbd>
+      </div>
+      <div class="keys" id="keys">
+        <div class="key reveal" data-combo="meta+p"><span>Rechercher partout</span><span><kbd>⌘</kbd><kbd>P</kbd></span></div>
+        <div class="key reveal" data-combo="meta+shift+p"><span>Palette de commandes</span><span><kbd>⌘</kbd><kbd>⇧</kbd><kbd>P</kbd></span></div>
+        <div class="key reveal" data-combo="meta+shift+o"><span>Aller au symbole</span><span><kbd>⌘</kbd><kbd>⇧</kbd><kbd>O</kbd></span></div>
+        <div class="key reveal" data-combo="meta+shift+f"><span>Rechercher dans le projet</span><span><kbd>⌘</kbd><kbd>⇧</kbd><kbd>F</kbd></span></div>
+        <div class="key reveal" data-combo="meta+shift+m"><span>Problèmes</span><span><kbd>⌘</kbd><kbd>⇧</kbd><kbd>M</kbd></span></div>
+        <div class="key reveal" data-combo="meta+shift+e"><span>Explorateur</span><span><kbd>⌘</kbd><kbd>⇧</kbd><kbd>E</kbd></span></div>
+        <div class="key reveal" data-combo="ctrl+shift+g"><span>Git</span><span><kbd>⌃</kbd><kbd>⇧</kbd><kbd>G</kbd></span></div>
+        <div class="key reveal" data-combo="meta+7"><span>Structure du fichier</span><span><kbd>⌘</kbd><kbd>7</kbd></span></div>
+        <div class="key reveal" data-combo="meta+alt+i"><span>Assistant IA</span><span><kbd>⌘</kbd><kbd>⌥</kbd><kbd>I</kbd></span></div>
+      </div>
+      <p class="key-hint reveal">Essaie : appuie sur <kbd>⌘</kbd><kbd>⇧</kbd><kbd>P</kbd> (ou <kbd>Ctrl</kbd><kbd>⇧</kbd><kbd>P</kbd>) maintenant.</p>
+    </div>
+  </section>
+
+  <!-- Git -->
+  <section id="git" class="alt">
+    <div class="wrap">
+      <div class="section-head center reveal">
+        <span class="eyebrow">Git intégré</span>
+        <h2>Git, comme sur ton Mac.</h2>
+        <p class="lead">Inspiré de GitHub Desktop. Coche tes fichiers, relis le diff, écris ton message, commit. Les branches et la fusion sont à un tap.</p>
+      </div>
+      <div class="feature">
+        <div class="graph-card graph reveal" id="graph">
+          <svg viewBox="0 0 520 300" role="img" aria-label="Graphe de commits : une branche feature/panier part de main puis y est fusionnée">
+            <path class="edge" d="M40 60 H480" stroke="#0A84FF"/>
+            <path class="edge" d="M110 60 C150 60 150 170 190 170 H340 C380 170 380 60 420 60" stroke="#8E7CFF" style="transition-delay:.4s"/>
+            <g class="node" style="transition-delay:.1s"><circle cx="40" cy="60" r="9" fill="#0A84FF"/></g>
+            <g class="node" style="transition-delay:.3s"><circle cx="110" cy="60" r="9" fill="#0A84FF"/></g>
+            <g class="node" style="transition-delay:.9s"><circle cx="190" cy="170" r="9" fill="#8E7CFF"/></g>
+            <g class="node" style="transition-delay:1.1s"><circle cx="265" cy="170" r="9" fill="#8E7CFF"/></g>
+            <g class="node" style="transition-delay:1.3s"><circle cx="340" cy="170" r="9" fill="#8E7CFF"/></g>
+            <g class="node" style="transition-delay:.6s"><circle cx="270" cy="60" r="9" fill="#0A84FF"/></g>
+            <g class="node" style="transition-delay:1.7s"><circle cx="420" cy="60" r="12" fill="#05070C" stroke="#30D158" stroke-width="4"/></g>
+            <text x="40" y="34">main</text>
+            <text x="190" y="206">feature/panier</text>
+            <text class="mono" x="190" y="226">Ajoute le panier</text>
+            <text class="mono" x="340" y="206">Codes promo</text>
+            <text x="388" y="34" fill="#30D158" style="fill:#30D158">Fusion ✓</text>
+            <text class="mono" x="40" y="280">3f2a9c1 · a71e0d4 · 9b4c2e8 · 5d10f3a</text>
+          </svg>
+          <div class="graph-legend">
+            <span class="chip"><i style="background:#0A84FF"></i>Commit</span>
+            <span class="chip"><i style="background:#8E7CFF"></i>Branches</span>
+            <span class="chip"><i style="background:#30D158"></i>Fusion</span>
+            <span class="chip"><i style="background:#64D2FF"></i>Clone, pull, push</span>
+          </div>
+        </div>
+        <div class="feature-text reveal">
+          <ul class="checks">
+            <li>Modifications à cocher fichier par fichier, avec leur diff</li>
+            <li>Commit avec résumé et description, sur la branche courante</li>
+            <li>Historique des commits et détail de chaque changement</li>
+            <li>Créer, changer et fusionner des branches</li>
+            <li>Clone, fetch, pull et push en HTTPS vers GitHub, GitLab ou ton serveur</li>
+            <li>Un moteur Git natif, écrit pour iOS : pas de terminal à installer</li>
+          </ul>
+        </div>
+      </div>
+      <div class="feature reverse">
+        <div class="feature-text reveal">
+          <span class="eyebrow">Panneau Git</span>
+          <h2>Relis. Coche.<br>Commit.</h2>
+          <p class="lead">Le diff côte à côte, bloc par bloc, avec le nom de la fonction touchée. Annule un bloc d’un tap, laisse l’assistant rédiger ton message, puis valide.</p>
+        </div>
+        <div class="device-shot duo reveal">
+          <div class="tablet land"><img src="assets/maquettes/ipad-git.webp" width="1600" height="1118" loading="lazy" alt="Git sur iPad : fichiers modifiés cochés, message de commit et diff côte à côte"></div>
+          <div class="phone"><img src="assets/maquettes/iphone-git.webp" width="780" height="1688" loading="lazy" alt="Git sur iPhone : trois modifications et le bouton Valider"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IA -->
+  <section id="ia">
+    <div class="wrap">
+      <div class="feature">
+        <div class="feature-text reveal">
+          <span class="eyebrow">L’IA, si tu veux</span>
+          <h2>Ton IA.<br><span class="gradient-text">Ta clé. Ton choix.</span></h2>
+          <p class="lead">iCode marche très bien sans IA. Si tu en veux une, branche le fournisseur que tu préfères avec ta propre clé d’API. Un assistant lit et modifie tes fichiers, et tu valides chaque changement.</p>
+          <ul class="checks">
+            <li>Clés rangées dans le Trousseau de l’appareil</li>
+            <li>Requêtes envoyées directement au fournisseur, sans passer par nos serveurs</li>
+            <li>Tu choisis le modèle, tu paies ce que tu consommes chez lui</li>
+            <li>Un serveur local ou maison compatible OpenAI fonctionne aussi</li>
+          </ul>
+        </div>
+        <div class="reveal">
+          <div class="providers">
+            <div class="provider"><span class="mark" style="background:#D97757">C</span><div><strong>Claude</strong><small>Anthropic</small></div><span class="state">Clé enregistrée</span></div>
+            <div class="provider"><span class="mark" style="background:#10A37F">G</span><div><strong>ChatGPT</strong><small>OpenAI</small></div><span class="state off">Ajouter une clé</span></div>
+            <div class="provider"><span class="mark" style="background:linear-gradient(135deg,#4285F4,#9B72CB)">G</span><div><strong>Gemini</strong><small>Google</small></div><span class="state off">Ajouter une clé</span></div>
+            <div class="provider"><span class="mark" style="background:#FA520F">M</span><div><strong>Mistral</strong><small>Mistral AI</small></div><span class="state off">Ajouter une clé</span></div>
+            <div class="provider"><span class="mark" style="background:#6467F2">O</span><div><strong>OpenRouter</strong><small>des centaines de modèles</small></div><span class="state off">Ajouter une clé</span></div>
+            <div class="provider"><span class="mark" style="background:#3a4150">⚙</span><div><strong>Ton serveur</strong><small>compatible OpenAI</small></div><span class="state off">Configurer</span></div>
+          </div>
+          <div class="ai-off"><span class="toggle" aria-hidden="true"></span>Pas d’IA ? Rien ne change : l’éditeur et Git restent complets.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- iOS 26 -->
+  <section id="ios" class="alt">
+    <div class="wrap">
+      <div class="section-head center reveal">
+        <span class="eyebrow">Natif iOS 26</span>
+        <h2>Fait pour ton iPhone.<br><span class="gradient-text">Jusqu’au dernier pixel.</span></h2>
+        <p class="lead">SwiftUI, Liquid Glass, widgets, Live Activities et Dynamic Island. iCode se comporte comme une app d’Apple.</p>
+      </div>
+      <div class="island-stage">
+        <div class="island-card reveal" id="island-card">
+          <div class="island" id="island">
+            <span class="l"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><path d="M6 9v3a6 6 0 0 0 6 6h3"/></svg>Push</span>
+            <span class="r mono" id="island-pct">0 %</span>
+            <div class="full">
+              <div class="row"><img class="appi" src="assets/icone.png" alt=""><span id="island-title">Push vers origin</span><small id="island-sub">feature/panier</small></div>
+              <div class="meta" id="island-meta">3 commits · 24 objets</div>
+              <div class="bar"><i id="island-bar"></i></div>
+            </div>
+          </div>
+          <div class="island-caption">
+            <h3>Dynamic Island et Live Activities</h3>
+            <p>Clone, pull, push et réponses de l’IA continuent pendant que tu fais autre chose. Tu suis tout depuis l’écran verrouillé.</p>
+          </div>
+        </div>
+        <div class="widgets">
+          <div class="widget reveal"><small>Projet en cours</small><strong>boutique</strong><span class="mono">feature/panier<br>3 à valider · 2 à pousser</span></div>
+          <div class="widget reveal"><small>Activité</small><strong>42 commits</strong><div class="spark" aria-hidden="true"><i style="height:30%"></i><i style="height:55%"></i><i style="height:40%"></i><i style="height:80%"></i><i style="height:65%"></i><i style="height:100%"></i><i style="height:72%"></i></div></div>
+          <div class="widget wide reveal"><small>Historique Git</small><strong>Codes promo dans le panier</strong><span class="mono">a71e0d4 · il y a 4 min</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Toutes les tailles -->
+  <section id="tailles">
+    <div class="wrap">
+      <div class="section-head center reveal">
+        <span class="eyebrow">Une interface, toutes les tailles</span>
+        <h2>Du pouce au grand écran.</h2>
+        <p class="lead">Une seule interface qui se replie : une colonne sur iPhone, deux volets sur un pliable ouvert, la barre latérale sur iPad, et une version Mac en préparation.</p>
+      </div>
+      <div class="sizes">
+        <figure class="reveal"><div class="phone"><img src="assets/maquettes/iphone-accueil.webp" width="780" height="1688" loading="lazy" alt="Accueil d’iCode sur iPhone : projet en cours et projets récents"></div><figcaption>iPhone</figcaption></figure>
+        <figure class="reveal"><div class="fold"><img src="assets/maquettes/pliable.webp" width="1300" height="1338" loading="lazy" alt="iCode sur un iPhone pliable ouvert : code d’un côté de la pliure, aperçu de l’autre"></div><figcaption>iPhone pliable ouvert</figcaption></figure>
+        <figure class="reveal"><div class="tablet"><img src="assets/maquettes/ipad-etroit.webp" width="900" height="1173" loading="lazy" alt="iCode dans une fenêtre étroite sur iPad, en Split View"></div><figcaption>iPad en Split View</figcaption></figure>
+      </div>
+      <figure class="mac reveal"><div class="macwin"><img src="assets/maquettes/mac.webp" width="1600" height="1000" loading="lazy" alt="Proposition d’iCode sur Mac : trois colonnes, sortie des tests et panneau Git"></div><figcaption>Mac, en préparation</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- Galerie -->
+  <section id="galerie">
+    <div class="wrap">
+      <div class="section-head center reveal">
+        <span class="eyebrow">En images</span>
+        <h2>Natif, rapide, beau.</h2>
+        <p class="lead">La nouvelle interface d’iCode, écran par écran.</p>
+      </div>
+      <div class="gallery-stage reveal" id="gallery">
+        <div class="seg" role="group" aria-label="Appareil">
+          <button type="button" data-device="ipad" aria-pressed="true">iPad</button>
+          <button type="button" data-device="iphone" aria-pressed="false">iPhone</button>
+        </div>
+        <div class="gallery-tabs" role="tablist" aria-label="Écrans de l’application"></div>
+        <figure>
+          <div class="frame tablet land" id="gallery-frame"><img id="gallery-img" src="assets/maquettes/ipad-editeur.webp" width="1600" height="1118" loading="lazy" alt="Écran d’iCode"></div>
+          <figcaption id="gallery-caption" aria-live="polite"></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tarifs -->
+  <section id="tarifs" class="alt">
+    <div class="wrap">
+      <div class="section-head center reveal">
+        <span class="eyebrow">Tarifs</span>
+        <h2>Gratuit pour coder.<br><span class="gradient-text">Pro pour aller plus loin.</span></h2>
+        <p class="lead">L’éditeur, l’intelligence du code, Git local et l’IA avec ta clé sont gratuits. Pro ajoute le Git distant, plusieurs IA, le mode agent, SSH et iCloud.</p>
+      </div>
+      <div class="pricing">
+        <div class="plan reveal">
+          <h3>Gratuit</h3>
+          <div class="price">0 €</div>
+          <div class="price-note">Pour toujours</div>
+          <ul>
+            <li>Éditeur complet et autocomplétion</li>
+            <li>Navigation, refactoring et diagnostics</li>
+            <li>Git local : commits, branches, historique</li>
+            <li>Assistant IA avec ta clé, un fournisseur</li>
+            <li>Raccourcis clavier et barre de touches</li>
+          </ul>
+          <a class="btn btn-ghost" href="#top">Bientôt disponible</a>
+        </div>
+        <div class="plan featured reveal">
+          <span class="badge">MEILLEURE OFFRE</span>
+          <h3>Pro annuel</h3>
+          <div class="price">39,99 € <small>/ an</small></div>
+          <div class="price-note">Soit 3,33 € par mois · 33 % d’économie</div>
+          <ul>
+            <li>Tout ce qui est inclus dans Gratuit</li>
+            <li>Clone, pull et push vers tes dépôts distants</li>
+            <li>Plusieurs fournisseurs d’IA et mode agent</li>
+            <li>SSH vers tes serveurs (bientôt)</li>
+            <li>Synchronisation iCloud des projets (bientôt)</li>
+          </ul>
+          <a class="btn btn-primary" href="#top">Bientôt disponible</a>
+        </div>
+        <div class="plan reveal">
+          <h3>Pro mensuel</h3>
+          <div class="price">4,99 € <small>/ mois</small></div>
+          <div class="price-note">Sans engagement · ou 99 € une fois, à vie</div>
+          <ul>
+            <li>Tout ce qui est inclus dans Pro annuel</li>
+            <li>Facturé chaque mois</li>
+            <li>Résiliable à tout moment depuis l’App Store</li>
+            <li>Tes projets restent sur ton appareil à l’expiration</li>
+          </ul>
+          <a class="btn btn-ghost" href="#top">Bientôt disponible</a>
+        </div>
+      </div>
+      <p class="pricing-foot">Prix de lancement TTC en France. Abonnement renouvelé automatiquement, géré et résiliable depuis les réglages de ton compte App Store. L’achat à vie est un paiement unique. L’usage de l’IA est facturé par le fournisseur que tu choisis.</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="wrap">
+      <div class="section-head center reveal">
+        <span class="eyebrow">Questions fréquentes</span>
+        <h2>Bonnes questions.</h2>
+      </div>
+      <div class="faq">
+        <details class="reveal">
+          <summary>Faut-il une IA pour utiliser iCode ?</summary>
+          <p>Non. iCode est d’abord un éditeur de code et un client Git complets. L’assistant IA est une option : tu l’actives seulement si tu ajoutes la clé d’un fournisseur.</p>
+        </details>
+        <details class="reveal">
+          <summary>Où sont mes projets et mes clés d’API ?</summary>
+          <p>Sur ton appareil. Les projets sont stockés localement, les clés dans le Trousseau d’iOS. iCode n’a pas de serveur : quand tu utilises l’IA, la requête part directement de ton appareil vers le fournisseur choisi. Le détail est dans notre <a href="confidentialite/">politique de confidentialité</a>.</p>
+        </details>
+        <details class="reveal">
+          <summary>Avec quels services Git iCode fonctionne-t-il ?</summary>
+          <p>GitHub, GitLab, Bitbucket, Gitea ou ton propre serveur : tout dépôt accessible en HTTPS. Pour un dépôt privé, tu utilises un jeton d’accès personnel.</p>
+        </details>
+        <details class="reveal">
+          <summary>Peut-on exécuter son code ?</summary>
+          <p>L’aperçu en direct affiche tes pages HTML, CSS et JavaScript à côté du code. Pour le reste, iCode se concentre sur l’écriture, la navigation et Git.</p>
+        </details>
+        <details class="reveal">
+          <summary>Sur quels appareils iCode fonctionne-t-il ?</summary>
+          <p>iPhone, iPhone pliable et iPad sous iOS 17 ou ultérieur. Liquid Glass, les Live Activities et la Dynamic Island profitent d’iOS 26 et des appareils compatibles.</p>
+        </details>
+        <details class="reveal">
+          <summary>Comment rejoindre la bêta ?</summary>
+          <p>La bêta passe par TestFlight. Écris-nous depuis la page <a href="support/">Support</a> pour recevoir une invitation.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Appel final -->
+  <section>
+    <div class="wrap">
+      <div class="cta-final reveal">
+        <img src="assets/icone.png" alt="" width="92" height="92">
+        <h2>Ton prochain commit<br>part de ta poche.</h2>
+        <p class="lead">Un vrai IDE et Git, sur iPhone et iPad. Sans compromis.</p>
+        <a class="btn btn-primary" href="support/">Rejoindre la bêta TestFlight</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 KM Capital Group · iCode</div>
+    <nav aria-label="Liens légaux">
+      <a href="confidentialite/">Confidentialité</a>
+      <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Conditions d’utilisation</a>
+      <a href="support/">Support</a>
+      <a href="en/" onclick="try{localStorage.setItem('icode-lang','en')}catch(e){}">English</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+  window.ICODE_GALLERY = {
+    ipad: [
+      ['ipad-editeur', 'Éditeur', 'Le code plein écran, la barre latérale et les onglets en verre, la pastille d’état en bas.', 'tablet land'],
+      ['ipad-git', 'Git et diff', 'Fichiers à cocher, message de commit et diff côte à côte, bloc par bloc.', 'tablet land'],
+      ['ipad-apercu', 'Aperçu et assistant', 'L’aperçu web en direct et l’assistant qui propose, toi qui gardes ou refuses.', 'tablet land'],
+      ['ipad-etroit', 'Fenêtre étroite', 'En Split View, le rail remplace la barre latérale.', 'tablet']
+    ],
+    iphone: [
+      ['iphone-accueil', 'Accueil', 'Reprends ton projet là où tu l’as laissé.', 'phone'],
+      ['iphone-editeur', 'Éditeur', 'Le code, la complétion et la pastille d’état, au pouce.', 'phone'],
+      ['iphone-git', 'Git', 'Les modifications, le message et Valider, en un écran.', 'phone'],
+      ['pliable', 'Pliable ouvert', 'Le code d’un côté de la pliure, l’aperçu de l’autre.', 'fold']
+    ]
+  };
+</script>
+<script src="assets/site.js" defer></script>
+<script src="assets/demo.js" defer></script>
+</body>
+</html>
