@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IDatabase — Tes bases de données. Enfin natives.</title>
+  <meta name="description" content="IDatabase est un client de bases de données natif pour Mac, iPad, iPhone et iPhone pliable : PostgreSQL, MySQL, MariaDB et SQLite. Il trouve tout seul les bases de tes projets iCode et protège ta production.">
+  <meta name="theme-color" content="#0B0D12">
+  <link rel="icon" type="image/svg+xml" href="assets/icone.svg">
+  <link rel="apple-touch-icon" href="assets/icone.png">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="IDatabase — Tes bases de données. Enfin natives.">
+  <meta property="og:description" content="Le client PostgreSQL, MySQL et SQLite natif pour Mac, iPad et iPhone. De la famille iCode.">
+  <meta property="og:image" content="https://kmcapitalgroup.github.io/icode-site/idatabase/assets/partage.jpg">
+  <meta property="og:locale" content="fr_FR">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="assets/idatabase.css">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+<div class="backdrop" aria-hidden="true"><span class="glow g1"></span><span class="glow g2"></span><span class="glow g3"></span></div>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="assets/icone.svg" alt="" width="30" height="30">IDatabase</a>
+    <nav class="nav-links" aria-label="Sections">
+      <a href="#detection">Détection</a>
+      <a href="#production">Production</a>
+      <a href="#schema">Schéma</a>
+      <a href="#sql">SQL</a>
+      <a href="#tutoriel">Tutoriel</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="family" href="../" title="iCode, l’éditeur de code de la même famille"><img src="../assets/icone.png" alt="" width="20" height="20"><span>avec iCode</span></a>
+    <a class="btn btn-primary btn-sm" href="../support/">Rejoindre la bêta</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="wrap">
+      <img class="hero-icon" src="assets/icone.svg" alt="Icône d’IDatabase" width="108" height="108">
+      <div><span class="pill"><b>NOUVEAU</b>De la famille iCode, pour Mac, iPad et iPhone</span></div>
+      <h1>Tes bases de données.<br><span class="mint">Enfin natives.</span></h1>
+      <p class="lead">Un client de bases de données écrit en SwiftUI, léger comme une app d’Apple et complet comme un IDE. Ouvre une table, filtre, corrige une ligne, lance ta requête. Sans jamais toucher la production par erreur.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="../support/">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.68c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.48.83-.72 0-1.82-.81-3-.79-1.54.02-2.97.9-3.76 2.28-1.6 2.78-.41 6.9 1.15 9.16.76 1.1 1.67 2.34 2.86 2.3 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.77.74 2.98.72 1.23-.02 2.01-1.12 2.76-2.23.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.4-.92-2.42-3.65zM14.1 5.9c.63-.77 1.06-1.83.94-2.9-.91.04-2.02.61-2.67 1.37-.58.68-1.1 1.77-.96 2.81 1.02.08 2.06-.52 2.69-1.28z"/></svg>
+          Bientôt sur l’App Store
+        </a>
+        <a class="btn btn-ghost" href="#tutoriel">Essayer le tutoriel</a>
+      </div>
+      <div class="engines" aria-label="Moteurs pris en charge">
+        <span class="engine"><i></i>PostgreSQL</span>
+        <span class="engine"><i></i>MySQL</span>
+        <span class="engine"><i></i>MariaDB</span>
+        <span class="engine"><i></i>SQLite</span>
+      </div>
+
+      <div class="stage" id="stage">
+        <div class="scaler mac" role="img" aria-label="IDatabase sur Mac : la table customers d’une base PostgreSQL de production en lecture seule, avec ses filtres, la grille colorée par type de colonne et l’inspecteur de ligne">
+          <div class="screen" aria-hidden="true">
+            <div class="app">
+              <div class="side">
+                <div class="lights"><i></i><i></i><i></i></div>
+                <div class="conn"><span class="badge">PG</span><div><strong>Boutique · prod</strong><small>PRODUCTION · LECTURE SEULE</small></div></div>
+                <div class="tabs-mini"><span class="on">Tables</span><span>Requêtes</span><span>Historique</span></div>
+                <div class="group">PUBLIC · 6</div>
+                <div class="tables">
+                  <div class="on"><i></i>customers<b>2.4k</b></div>
+                  <div><i></i>orders<b>18k</b></div>
+                  <div><i></i>order_items<b>41k</b></div>
+                  <div><i></i>products<b>312</b></div>
+                  <div><i></i>categories<b>12</b></div>
+                  <div class="view"><i></i>customer_revenue<b>vue</b></div>
+                </div>
+                <div class="status"><div><i></i>Connecté<b>8 ms</b></div><span>PostgreSQL 16 · TLS 1.3</span></div>
+              </div>
+              <div class="main">
+                <div class="head">
+                  <div><small>Boutique · prod › public</small><h4>customers</h4></div>
+                  <div class="seg"><span class="on">Données</span><span>Structure</span><span>Relations</span><span>DDL</span></div>
+                  <span class="metric">2 384 lignes · 12 ms</span>
+                </div>
+                <div class="filters">
+                  <span class="chip"><span class="k" style="color:var(--t-text)">city</span><span class="op">est</span><b id="hero-filter">Paris</b></span>
+                  <span class="chip"><span class="k" style="color:var(--t-bool)">vip</span><span class="op">est</span><b>vrai</b></span>
+                  <span class="chip add">+ Ajouter un filtre</span>
+                </div>
+                <div class="body">
+                  <div class="grid">
+                    <div class="cols">
+                      <div></div>
+                      <div>id <span class="type ty-num">int4</span></div>
+                      <div>first_name <span class="type ty-text">text</span></div>
+                      <div>last_name <span class="type ty-text">text</span></div>
+                      <div>email <span class="type ty-text">varchar</span></div>
+                      <div>created_at ↓ <span class="type ty-date">timestamptz</span></div>
+                      <div>vip <span class="type ty-bool">bool</span></div>
+                    </div>
+                    <div class="rows" id="hero-rows">
+              <div class="row" data-orders="4"><div class="n">1</div><div class="id">1042</div><div>Camille</div><div>Martin</div><div>camille.martin@exemple.fr</div><div class="d">12 nov. 14:02</div><div><span class="tog on"></span></div></div>
+              <div class="row" data-orders="17"><div class="n">2</div><div class="id">1057</div><div>Léa</div><div>Dubois</div><div>lea.dubois@exemple.fr</div><div class="d">12 nov. 11:45</div><div><span class="tog"></span></div></div>
+              <div class="row" data-orders="13"><div class="n">3</div><div class="id">1063</div><div>Hugo</div><div>Bernard</div><div>hugo.bernard@exemple.fr</div><div class="d">11 nov. 09:12</div><div><span class="tog on"></span></div></div>
+              <div class="row sel" data-orders="4"><div class="n">4</div><div class="id">1088</div><div>Inès</div><div>Leroy</div><div>ines.leroy@exemple.fr</div><div class="d">10 nov. 18:30</div><div><span class="tog on"></span></div></div>
+              <div class="row" data-orders="10"><div class="n">5</div><div class="id">1102</div><div>Jules</div><div>Moreau</div><div class="null">NULL</div><div class="d">10 nov. 14:08</div><div><span class="tog"></span></div></div>
+              <div class="row" data-orders="6"><div class="n">6</div><div class="id">1131</div><div>Manon</div><div>Simon</div><div>manon.simon@exemple.fr</div><div class="d">9 nov. 08:55</div><div><span class="tog on"></span></div></div>
+              <div class="row" data-orders="22"><div class="n">7</div><div class="id">1176</div><div>Nathan</div><div>Laurent</div><div>nathan.laurent@exemple.fr</div><div class="d">8 nov. 18:21</div><div><span class="tog"></span></div></div>
+              <div class="row" data-orders="11"><div class="n">8</div><div class="id">1204</div><div>Sarah</div><div>Michel</div><div>sarah.michel@exemple.fr</div><div class="d">8 nov. 12:40</div><div><span class="tog on"></span></div></div>
+              <div class="row" data-orders="3"><div class="n">9</div><div class="id">1239</div><div>Théo</div><div>Garcia</div><div>theo.garcia@exemple.fr</div><div class="d">7 nov. 10:17</div><div><span class="tog"></span></div></div>
+              <div class="row" data-orders="21"><div class="n">10</div><div class="id">1281</div><div>Zoé</div><div>David</div><div>zoe.david@exemple.fr</div><div class="d">6 nov. 15:33</div><div><span class="tog on"></span></div></div>
+              <div class="row" data-orders="7"><div class="n">11</div><div class="id">1302</div><div>Adam</div><div>Petit</div><div>adam.petit@exemple.fr</div><div class="d">5 nov. 09:01</div><div><span class="tog"></span></div></div>
+              <div class="row" data-orders="23"><div class="n">12</div><div class="id">1347</div><div>Lina</div><div>Durand</div><div>lina.durand@exemple.fr</div><div class="d">4 nov. 17:48</div><div><span class="tog on"></span></div></div>
+              <div class="row" data-orders="11"><div class="n">13</div><div class="id">1388</div><div>Gabriel</div><div>Richard</div><div>gabriel.richard@exemple.fr</div><div class="d">3 nov. 13:26</div><div><span class="tog"></span></div></div>
+              <div class="row" data-orders="18"><div class="n">14</div><div class="id">1412</div><div>Jade</div><div>Thomas</div><div>jade.thomas@exemple.fr</div><div class="d">2 nov. 11:59</div><div><span class="tog on"></span></div></div>
+              <div class="row" data-orders="20"><div class="n">15</div><div class="id">1455</div><div>Raphaël</div><div>Lefebvre</div><div>raphael.lefebvre@exemple.fr</div><div class="d">1 nov. 08:14</div><div><span class="tog"></span></div></div>
+              <div class="row" data-orders="17"><div class="n">16</div><div class="id">1471</div><div>Chloé</div><div>Roux</div><div>chloe.roux@exemple.fr</div><div class="d">31 oct. 16:20</div><div><span class="tog on"></span></div></div>
+                    </div>
+                  </div>
+                  <div class="inspector">
+                    <div class="top"><strong id="ins-title">Ligne 4</strong><em id="ins-badge">MODIFIÉE</em></div>
+                    <div class="field"><span>first_name</span><div id="ins-first">Inès</div></div>
+                    <div class="field"><span>last_name</span><div id="ins-last">Leroy</div></div>
+                    <div class="field changed" id="ins-email-f"><span>email</span><div id="ins-email">ines.leroy@exemple.fr</div></div>
+                    <div class="field"><span>orders · relation</span></div>
+                    <div class="rel"><strong id="ins-orders">14</strong><span>commandes</span><b>→</b></div>
+                    <div class="actions"><span>Annuler</span><span class="go">Valider ⌘S</span></div>
+                  </div>
+                </div>
+                <div class="cmdbar">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#4BE3B5" stroke-width="1.7"><path d="M3 4l4 4-4 4M8.5 12H13"/></svg>
+                  <span>Filtrer, aller à une table ou exécuter du SQL…</span><em>⌘K</em><b>Nouvelle requête</b>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="scaler phone mac-phone" role="img" aria-label="IDatabase sur iPhone : la table customers en cartes, avec un filtre et la barre de recherche flottante">
+          <div class="screen" aria-hidden="true">
+            <div class="ph">
+              <div class="bar"><span>‹ public</span><span>PROD</span></div>
+              <h5>customers <small>2 384</small></h5>
+              <div class="pseg"><span class="on">Données</span><span>Structure</span><span>Relations</span></div>
+              <div><span class="chip"><span class="k" style="color:var(--t-text)">city</span> Paris</span></div>
+              <div class="card"><div><strong>Camille Martin</strong><span class="id">#1042</span></div><span class="mail">camille.martin@exemple.fr</span><div class="tags"><span class="ty-date">12 nov.</span><span class="ty-bool">vip</span></div></div>
+              <div class="card"><div><strong>Léa Dubois</strong><span class="id">#1057</span></div><span class="mail">lea.dubois@exemple.fr</span><div class="tags"><span class="ty-date">12 nov.</span></div></div>
+              <div class="card"><div><strong>Hugo Bernard</strong><span class="id">#1063</span></div><span class="mail">hugo.bernard@exemple.fr</span><div class="tags"><span class="ty-date">11 nov.</span><span class="ty-bool">vip</span></div></div>
+              <div class="card"><div><strong>Jules Moreau</strong><span class="id">#1102</span></div><span class="mail" style="font-style:italic;color:#6F7889">NULL</span><div class="tags"><span class="ty-date">10 nov.</span></div></div>
+              <div class="fab">Filtrer ou rechercher<b>+</b></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="facts reveal">
+        <div class="fact"><strong>4</strong><span>moteurs : PostgreSQL, MySQL, MariaDB et SQLite</span></div>
+        <div class="fact"><strong>4</strong><span>formats : iPhone, pliable, iPad et Mac</span></div>
+        <div class="fact"><strong class="mint">5</strong><span>couleurs, une par type de colonne</span></div>
+        <div class="fact"><strong class="coral">1</strong><span>règle : la production ne se modifie pas par accident</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Détection -->
+  <section id="detection">
+    <div class="wrap">
+      <div class="feature">
+        <div class="reveal">
+          <span class="eyebrow">Détection automatique</span>
+          <h2>Il trouve tes bases.<br><span class="mint">Avant que tu les cherches.</span></h2>
+          <p class="lead">IDatabase lit tes projets iCode et repère les bases qu’ils utilisent. Laravel, Prisma, Docker Compose ou un simple fichier SQLite : la connexion est prête, tu n’as plus qu’à l’ouvrir.</p>
+          <ul class="checks">
+            <li>Le <code>.env</code> de Laravel et toute variable <code>DATABASE_URL</code></li>
+            <li>Le <code>schema.prisma</code> et sa source de données</li>
+            <li>Les services de base déclarés dans <code>docker-compose.yml</code></li>
+            <li>Les fichiers <code>.sqlite</code> et <code>.db</code> du projet</li>
+            <li>Les mots de passe restent dans le Trousseau, partagé avec iCode</li>
+          </ul>
+        </div>
+        <div class="panel scan reveal" id="scan">
+          <div class="scan-head">
+            <img src="../assets/icone.png" alt="" width="34" height="34">
+            <div><strong>boutique</strong><small>Projet iCode</small></div>
+            <span class="prog" id="scan-prog">Analyse…</span>
+          </div>
+          <ul class="scan-list">
+            <li><span class="ic">ENV</span><div><code>.env</code><small>DB_CONNECTION=pgsql</small></div><span class="res">PostgreSQL</span></li>
+            <li><span class="ic">◆</span><div><code>prisma/schema.prisma</code><small>provider = "mysql"</small></div><span class="res">MySQL</span></li>
+            <li><span class="ic">YML</span><div><code>docker-compose.yml</code><small>image: mariadb:11</small></div><span class="res">MariaDB</span></li>
+            <li><span class="ic">DB</span><div><code>storage/cache.sqlite</code><small>3,2 Mo</small></div><span class="res">SQLite</span></li>
+          </ul>
+          <div class="scan-foot"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="#4BE3B5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5.5 10.5 3 3 6-7"/></svg><span><b id="scan-count">4 connexions</b> prêtes à ouvrir</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Production -->
+  <section id="production">
+    <div class="wrap">
+      <div class="feature reverse">
+        <div class="reveal">
+          <span class="eyebrow coral">Production protégée</span>
+          <h2>Le corail veut dire<br><span class="coral">« attention ».</span></h2>
+          <p class="lead">Chaque connexion porte une étiquette. En production, toute l’interface se teinte de corail et passe en lecture seule. Pour écrire, il faut le décider, en toutes lettres.</p>
+          <ul class="checks">
+            <li>Étiquette Local, Préproduction ou Production, visible partout</li>
+            <li>Lecture seule par défaut sur la production</li>
+            <li>Les requêtes qui modifient des données sont arrêtées avant d’être envoyées</li>
+            <li>Chaque modification de ligne se relit avant d’être validée</li>
+          </ul>
+        </div>
+        <div class="panel envs reveal" id="envs">
+          <div class="env-switch" role="group" aria-label="Environnement de la connexion">
+            <button type="button" aria-pressed="true" data-env="local"><i></i>Local</button>
+            <button type="button" class="p" aria-pressed="false" data-env="prod"><i></i>Production</button>
+          </div>
+          <div class="env-bar">
+            <span class="badge">PG</span>
+            <div><strong id="env-name">Boutique · local</strong><small id="env-tag">LOCAL · LECTURE ET ÉCRITURE</small></div>
+          </div>
+          <div class="sql-line"><span class="kw">UPDATE</span> <span class="id2">customers</span>
+<span class="kw">SET</span>    <span class="id2">vip</span> <span class="op2">=</span> <span class="kw">true</span>
+<span class="kw">WHERE</span>  <span class="id2">city</span> <span class="op2">=</span> <span class="str">'Paris'</span><span class="op2">;</span></div>
+          <div class="verdict" aria-live="polite">
+            <svg id="verdict-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>
+            <div><strong id="verdict-title">Exécutée · 214 lignes modifiées</strong><span id="verdict-text">Base locale : tu écris librement.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Types -->
+  <section id="types">
+    <div class="wrap">
+      <div class="section-head center reveal">
+        <span class="eyebrow">Lisible d’un coup d’œil</span>
+        <h2>Chaque type a sa couleur.</h2>
+        <p class="lead">Les nombres, le texte, les dates, les booléens et le JSON gardent la même couleur partout : dans la grille, l’inspecteur, la console et la carte du schéma.</p>
+      </div>
+      <div class="types">
+        <div class="tcard reveal" style="--c:var(--t-num)"><span class="sw">123</span><h3>Nombres</h3><code>int · numeric · serial</code><span class="val">3412.80</span></div>
+        <div class="tcard reveal" style="--c:var(--t-text)"><span class="sw">Aa</span><h3>Texte</h3><code>text · varchar · uuid</code><span class="val">'Camille Martin'</span></div>
+        <div class="tcard reveal" style="--c:var(--t-date)"><span class="sw"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="4" y="5.5" width="16" height="14.5" rx="3"/><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4"/></svg></span><h3>Dates</h3><code>date · timestamptz</code><span class="val">2026-11-12 14:02</span></div>
+        <div class="tcard reveal" style="--c:var(--t-bool)"><span class="sw"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2.5" y="7" width="19" height="10" rx="5" stroke="currentColor" stroke-width="2"/><circle cx="16.5" cy="12" r="3" fill="currentColor"/></svg></span><h3>Booléens</h3><code>bool · tinyint(1)</code><span class="val">true</span></div>
+        <div class="tcard reveal" style="--c:var(--t-json)"><span class="sw">{ }</span><h3>JSON</h3><code>json · jsonb</code><span class="val">{"plan": "pro"}</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Schéma -->
+  <section id="schema">
+    <div class="wrap">
+      <div class="feature">
+        <div class="reveal">
+          <span class="eyebrow">Carte du schéma</span>
+          <h2>Toutes tes tables.<br><span class="mint">Et ce qui les relie.</span></h2>
+          <p class="lead">Les clés étrangères deviennent des liens. Touche une table pour voir ses voisines, suis une relation pour ouvrir les lignes qui s’y rattachent.</p>
+          <ul class="checks">
+            <li>Clés primaires en ambre, clés étrangères en cyan</li>
+            <li>Pincer pour zoomer sur iPhone et iPad, glisser sur Mac</li>
+            <li>De la carte à la table en un tap, filtrée sur la relation</li>
+          </ul>
+        </div>
+        <div class="panel schema reveal" id="schema-map">
+          <svg viewBox="0 0 560 380" role="img" aria-label="Carte du schéma : customers est relié à orders, orders à order_items et order_items à products">
+            <path class="edge" d="M196 92 C240 92 240 70 286 70"/>
+            <path class="edge" d="M420 120 C420 170 420 180 420 206"/>
+            <path class="edge" d="M286 262 C230 262 230 290 186 290"/>
+            <g class="tbl focus" transform="translate(16 40)"><rect class="box" width="180" height="104" rx="12"/><rect class="hd" x="1" y="1" width="178" height="30" rx="11"/><text class="t" x="14" y="21">customers</text><text class="pk" x="14" y="52">id</text><text x="14" y="72">email</text><text x="14" y="92">city</text></g>
+            <g class="tbl" transform="translate(286 30)"><rect class="box" width="180" height="90" rx="12"/><rect class="hd" x="1" y="1" width="178" height="30" rx="11"/><text class="t" x="14" y="21">orders</text><text class="pk" x="14" y="52">id</text><text class="fk" x="14" y="72">customer_id</text></g>
+            <g class="tbl" transform="translate(286 206)"><rect class="box" width="180" height="110" rx="12"/><rect class="hd" x="1" y="1" width="178" height="30" rx="11"/><text class="t" x="14" y="21">order_items</text><text class="pk" x="14" y="52">id</text><text class="fk" x="14" y="72">order_id</text><text class="fk" x="14" y="92">product_id</text></g>
+            <g class="tbl" transform="translate(16 248)"><rect class="box" width="170" height="90" rx="12"/><rect class="hd" x="1" y="1" width="168" height="30" rx="11"/><text class="t" x="14" y="21">products</text><text class="pk" x="14" y="52">id</text><text class="fk" x="14" y="72">category_id</text></g>
+          </svg>
+          <div class="legend">
+            <span><i style="background:var(--t-date)"></i>Clé primaire</span>
+            <span><i style="background:var(--t-num)"></i>Clé étrangère</span>
+            <span><i style="background:var(--mint)"></i>Relation</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SQL -->
+  <section id="sql">
+    <div class="wrap">
+      <div class="feature reverse">
+        <div class="reveal">
+          <span class="eyebrow">Console SQL</span>
+          <h2>Écris ta requête.<br><span class="mint">Lis le résultat.</span></h2>
+          <p class="lead">Coloration, complétion des tables et des colonnes, résultats dans la même grille que tes données. Chaque requête lancée rejoint l’historique, prête à être relancée.</p>
+          <ul class="checks">
+            <li>Exécuter la requête sous le curseur avec <kbd>⌘</kbd><kbd>↵</kbd></li>
+            <li>Complétion qui connaît ton schéma</li>
+            <li>Historique par connexion, avec la durée et le nombre de lignes</li>
+          </ul>
+        </div>
+        <div class="reveal">
+          <div class="panel console" id="console">
+            <div class="console-tabs"><span class="on">Chiffre par ville</span><span>Requête 2</span><button class="run" type="button" id="run">Exécuter <kbd>⌘</kbd><kbd>↵</kbd></button></div>
+            <div class="editor" id="editor" aria-label="Requête SQL d’exemple">
+              <div class="ln"><b>1</b><span><span class="kw">SELECT</span> <span class="id2">c.city</span><span class="op2">,</span> <span class="fn">sum</span><span class="op2">(</span><span class="id2">o.total</span><span class="op2">)</span> <span class="kw">AS</span> <span class="id2">revenue</span></span></div>
+              <div class="ln"><b>2</b><span><span class="kw">FROM</span>   <span class="id2">customers c</span></span></div>
+              <div class="ln"><b>3</b><span><span class="kw">JOIN</span>   <span class="id2">orders o</span> <span class="kw">ON</span> <span class="id2">o.customer_id</span> <span class="op2">=</span> <span class="id2">c.id</span></span></div>
+              <div class="ln"><b>4</b><span><span class="kw">WHERE</span>  <span class="id2">o.created_at</span> <span class="op2">&gt;=</span> <span class="str">'2026-01-01'</span></span></div>
+              <div class="ln"><b>5</b><span><span class="kw">GROUP BY</span> <span class="num">1</span> <span class="kw">ORDER BY</span> <span class="num">2</span> <span class="kw">DESC</span><span class="op2">;</span><span class="caret"></span></span></div>
+            </div>
+            <div class="result" id="result">
+              <div class="result-head"><span>Résultat</span><b>4 lignes · 23 ms</b></div>
+              <div class="result-wrap">
+                <table>
+                  <thead><tr><th>city <span class="type ty-text">text</span></th><th>revenue <span class="type ty-num">numeric</span></th></tr></thead>
+                  <tbody>
+                    <tr><td>Paris</td><td class="num">184 220,40</td></tr>
+                    <tr><td>Lyon</td><td class="num">96 410,15</td></tr>
+                    <tr><td>Marseille</td><td class="num">71 902,80</td></tr>
+                    <tr><td>Bordeaux</td><td class="num">48 315,00</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="history" aria-label="Historique des requêtes">
+            <div><span>SELECT * FROM orders WHERE status = 'pending'</span><em>18 ms · il y a 4 min</em></div>
+            <div><span>SELECT count(*) FROM customers WHERE vip</span><em>6 ms · il y a 12 min</em></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tailles -->
+  <section id="tailles">
+    <div class="wrap">
+      <div class="section-head center reveal">
+        <span class="eyebrow">Une app, toutes les tailles</span>
+        <h2>Du pouce au grand écran.</h2>
+        <p class="lead">Une seule interface SwiftUI qui se déplie : des cartes sur iPhone, deux volets sur un pliable ouvert, la grille et l’inspecteur sur iPad et sur Mac.</p>
+      </div>
+      <div class="sizes">
+        <div class="size reveal"><div class="glyph"><span style="width:30px;height:56px;border-radius:9px"></span></div><h3>iPhone</h3><p>Chaque ligne devient une carte lisible au pouce. La recherche flotte en bas de l’écran.</p></div>
+        <div class="size reveal"><div class="glyph"><span style="width:58px;height:56px;--sb:50%"></span></div><h3>iPhone pliable</h3><p>Ouvert, la liste des tables d’un côté de la pliure, les données de l’autre.</p></div>
+        <div class="size reveal"><div class="glyph"><span style="width:80px;height:58px;--sb:30%"></span></div><h3>iPad</h3><p>La grille complète, l’inspecteur à côté, et tes raccourcis avec un clavier.</p></div>
+        <div class="size reveal"><div class="glyph"><span style="width:96px;height:60px;--sb:24%;border-radius:6px"></span></div><h3>Mac</h3><p>Plusieurs fenêtres, la barre de commande <kbd>⌘</kbd><kbd>K</kbd> et toute la place pour tes requêtes.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tutoriel -->
+  <section id="tutoriel">
+    <div class="wrap">
+      <div class="section-head center reveal">
+        <span class="eyebrow">Tutoriel interactif</span>
+        <h2>Prêt en une minute.</h2>
+        <p class="lead">Au premier lancement, IDatabase te guide sur une base d’exemple. Tu apprends en faisant, et rien ne touche tes vraies données. Essaie ici.</p>
+      </div>
+      <div class="panel tuto reveal" id="tuto">
+        <ol class="steps">
+          <li><button type="button" aria-current="step"><span>Ouvre une connexion</span></button></li>
+          <li><button type="button"><span>Filtre une table</span></button></li>
+          <li><button type="button"><span>Inspecte une ligne</span></button></li>
+          <li><button type="button"><span>Lance une requête</span></button></li>
+          <li><button type="button"><span>Protège la production</span></button></li>
+        </ol>
+        <div class="tuto-view">
+          <h3 id="tuto-title">Ouvre une connexion</h3>
+          <p id="tuto-text">Tes bases détectées t’attendent sur l’accueil. Touche « Boutique · local » pour l’ouvrir.</p>
+          <div class="tuto-demo" id="tuto-demo" aria-live="polite"></div>
+          <div class="tuto-nav">
+            <div class="dots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i></div>
+            <button type="button" class="btn btn-ghost btn-sm" id="tuto-prev">Précédent</button>
+            <button type="button" class="btn btn-primary btn-sm" id="tuto-next">Suivant</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- iCode -->
+  <section id="icode">
+    <div class="wrap">
+      <div class="panel family-card reveal">
+        <div class="icons"><img src="../assets/icone.png" alt="iCode" width="72" height="72"><span class="plus">+</span><img src="assets/icone.svg" alt="IDatabase" width="72" height="72"></div>
+        <div>
+          <span class="eyebrow">La famille iCode</span>
+          <h2 style="font-size:clamp(28px,3.4vw,40px)">Ton code et tes données, côte à côte.</h2>
+          <p>iCode écrit le code, IDatabase ouvre les données. Depuis un projet iCode, un tap ouvre sa base dans IDatabase, et l’inverse te ramène au projet. Les deux apps partagent leurs connexions et le Trousseau.</p>
+        </div>
+        <a class="btn btn-ghost" href="../">Découvrir iCode</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="wrap">
+      <div class="section-head center reveal">
+        <span class="eyebrow">Questions fréquentes</span>
+        <h2>Bonnes questions.</h2>
+      </div>
+      <div class="faq">
+        <details class="reveal">
+          <summary>Quelles bases de données IDatabase ouvre-t-il ?</summary>
+          <p>PostgreSQL, MySQL, MariaDB et SQLite. Les bases distantes se connectent directement depuis ton appareil, en TLS quand le serveur le propose. Les fichiers SQLite s’ouvrent depuis Fichiers ou depuis un projet iCode.</p>
+        </details>
+        <details class="reveal">
+          <summary>Faut-il iCode pour utiliser IDatabase ?</summary>
+          <p>Non. IDatabase fonctionne seul : tu ajoutes une connexion à la main ou tu ouvres un fichier SQLite. Avec iCode, il trouve en plus les bases de tes projets tout seul.</p>
+        </details>
+        <details class="reveal">
+          <summary>Comment IDatabase protège-t-il ma production ?</summary>
+          <p>Une connexion étiquetée Production s’affiche en corail et s’ouvre en lecture seule. Les requêtes qui modifient des données sont arrêtées avant d’être envoyées tant que tu n’as pas autorisé l’écriture pour cette session.</p>
+        </details>
+        <details class="reveal">
+          <summary>Où sont stockés mes mots de passe ?</summary>
+          <p>Dans le Trousseau de ton appareil, partagé avec iCode quand les deux apps sont installées. IDatabase ne les envoie qu’au serveur de base de données auquel tu te connectes.</p>
+        </details>
+        <details class="reveal">
+          <summary>Sur quels appareils IDatabase fonctionne-t-il ?</summary>
+          <p>Mac, iPad, iPhone et iPhone pliable, avec une seule app SwiftUI qui s’adapte à chaque taille d’écran.</p>
+        </details>
+        <details class="reveal">
+          <summary>Comment rejoindre la bêta ?</summary>
+          <p>La bêta passe par TestFlight. Écris-nous depuis la page <a href="../support/">Support</a> pour recevoir une invitation.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Appel final -->
+  <section>
+    <div class="wrap">
+      <div class="cta-final reveal">
+        <img src="assets/icone.svg" alt="" width="88" height="88" style="margin:0 auto 26px">
+        <h2>Ta prochaine requête<br><span class="mint">part de ta poche.</span></h2>
+        <p class="lead">PostgreSQL, MySQL, MariaDB et SQLite, en natif sur Mac, iPad et iPhone.</p>
+        <a class="btn btn-primary" href="../support/">Rejoindre la bêta TestFlight</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 KM Capital Group · IDatabase</div>
+    <nav aria-label="Liens">
+      <a href="../">iCode</a>
+      <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Conditions d’utilisation</a>
+      <a href="../support/">Support</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="assets/idatabase.js" defer></script>
+</body>
+</html>
