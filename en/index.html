@@ -3,15 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>iCode — Code anywhere. For real.</title>
-  <meta name="description" content="iCode is a real native IDE and Git client for iPhone, foldable iPhone and iPad: code completion, code navigation, Git like GitHub Desktop. AI is optional, with the provider key of your choice.">
+  <title>iCode — Build your apps. Anywhere.</title>
+  <meta name="description" content="iCode is a real Swift development environment for iPhone and iPad: write your app in SwiftUI, see it live, run it in the real Simulator with iCode Runner and version it with Git. AI is optional.">
   <meta name="theme-color" content="#05070C">
   <link rel="icon" type="image/png" href="../assets/favicon.png">
   <link rel="apple-touch-icon" href="../assets/icone.png">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="iCode — Code anywhere. For real.">
-  <meta property="og:description" content="A real native IDE and Git client for iPhone and iPad. AI if you want it, with your own key.">
-  <meta property="og:image" content="https://kmcapitalgroup.github.io/icode-site/assets/partage.jpg">
+  <meta property="og:title" content="iCode — Build your apps. Anywhere.">
+  <meta property="og:description" content="Swift and SwiftUI, live preview, the real Simulator and Git, on iPhone and iPad. AI if you want it.">
+  <meta property="og:image" content="https://kmcapitalgroup.github.io/icode-site/assets/partage-en.jpg">
   <meta property="og:locale" content="en_US">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="alternate" hreflang="fr" href="https://kmcapitalgroup.github.io/icode-site/">
@@ -51,148 +51,157 @@
   <section class="hero">
     <div class="wrap">
       <img class="hero-icon" src="../assets/icone.png" alt="iCode icon" width="112" height="112">
-      <div><span class="pill"><b>NEW</b>Liquid Glass design for iPhone, iPad and foldables</span></div>
-      <h1>Code anywhere.<br><span class="gradient-text">For real.</span></h1>
-      <p class="lead">The native code editor, written in Swift and built to be the fastest on iPhone and iPad. Code fills the screen, errors show up as you type, and Git is built in. AI is optional, with the provider of your choice.</p>
+      <div><span class="pill"><b>NEW</b>SwiftUI preview and the real Simulator with iCode Runner</span></div>
+      <h1>Build your apps.<br><span class="gradient-text">Anywhere.</span></h1>
+      <p class="lead">The real Swift development environment for iPhone and iPad. Write your app in SwiftUI, watch it come to life next to the code, run it in the real Simulator and version it with Git. AI is optional: your device’s own, for free, or the one you choose.</p>
       <div class="hero-cta">
         <a class="btn btn-primary" href="#tarifs">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.68c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.48.83-.72 0-1.82-.81-3-.79-1.54.02-2.97.9-3.76 2.28-1.6 2.78-.41 6.9 1.15 9.16.76 1.1 1.67 2.34 2.86 2.3 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.77.74 2.98.72 1.23-.02 2.01-1.12 2.76-2.23.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.4-.92-2.42-3.65zM14.1 5.9c.63-.77 1.06-1.83.94-2.9-.91.04-2.02.61-2.67 1.37-.58.68-1.1 1.77-.96 2.81 1.02.08 2.06-.52 2.69-1.28z"/></svg>
           Coming soon to the App Store
         </a>
-        <a class="btn btn-ghost" href="#ide">See the editor</a>
+        <a class="btn btn-ghost" href="#apercu">See the preview</a>
       </div>
       <p class="hero-note">100% native SwiftUI · Works offline · No iCode account</p>
 
       <div class="stage" id="stage">
         <div class="ipad">
           <div class="ipad-screen">
-            <div class="demo" id="demo" role="img" aria-label="Animated iCode demo: writing a function with code completion, then committing and pushing from the Git panel">
-              <noscript><img src="../assets/maquettes/ipad-editeur.webp" alt="The iCode editor on iPad"></noscript>
+            <div class="demo" id="demo" role="img" aria-label="Animated iCode demo: writing a Swift method with code completion, then committing and pushing from the Git panel">
+              <noscript><img src="../assets/captures/en/ipad-editor.webp" alt="The iCode Swift editor on iPad"></noscript>
             </div>
           </div>
         </div>
-        <div class="iphone"><img src="../assets/maquettes/iphone-editeur.webp" width="780" height="1688" alt="iCode on iPhone: full-screen code, completion and the status pill"></div>
+        <div class="iphone"><img src="../assets/captures/en/iphone-apercu.webp" width="780" height="1695" alt="iCode on iPhone: the SwiftUI preview of a shop app"></div>
       </div>
 
       <div class="stats reveal">
-        <div class="stat"><strong data-count="30">30+</strong><span>keyboard shortcuts</span></div>
-        <div class="stat"><strong data-count="9">9</strong><span>languages highlighted and analyzed</span></div>
-        <div class="stat"><strong data-count="6">6</strong><span>AI providers to choose from</span></div>
+        <div class="stat"><strong>30+</strong><span>keyboard shortcuts</span></div>
+        <div class="stat"><strong>2</strong><span>ways to see your app: preview and Simulator</span></div>
+        <div class="stat"><strong>7</strong><span>AI choices, including on-device</span></div>
         <div class="stat"><strong>0</strong><span>iCode servers between you and your code</span></div>
       </div>
     </div>
   </section>
 
-  <!-- Un vrai IDE -->
+  <!-- A real IDE -->
   <section id="ide">
     <div class="wrap">
       <div class="section-head center reveal">
-        <span class="eyebrow">A real IDE</span>
-        <h2>Fast. Connected.<br><span class="gradient-text">It helps you code.</span></h2>
-        <p class="lead">Everything you expect from JetBrains or VS Code, rewritten in Swift for iPhone and iPad, with no web view between you and your code.</p>
+        <span class="eyebrow">A real Swift IDE</span>
+        <h2>Fast. Native.<br><span class="gradient-text">It helps you code.</span></h2>
+        <p class="lead">Everything you expect from Xcode, JetBrains or VS Code to write a Swift app, rebuilt for iPhone and iPad, with no web view between you and your code.</p>
       </div>
       <div class="grid-3">
         <article class="card reveal">
           <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></div>
           <h3>Native speed</h3>
-          <p>Swift, SwiftUI and the iOS text engine. The editor opens instantly and scrolls smoothly, even on a big file.</p>
+          <p>Swift, SwiftUI and iOS’s own text engine. The editor opens instantly and scrolls smoothly, even through a big file.</p>
         </article>
         <article class="card reveal">
           <div class="icon orange"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4l9 16H3z"/><path d="M12 10v5M12 17.5v.5"/></svg></div>
-          <h3>Live errors</h3>
-          <p>Problems are underlined as you type, explained next to the line and gathered in one panel. One tap and you are there.</p>
+          <h3>Errors before you build</h3>
+          <p>A variable never read, a mistyped type, a deprecated API: underlined as you type, explained on the line and gathered in the Problems panel.</p>
         </article>
         <article class="card reveal">
           <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h10M4 12h16M4 18h7"/><path d="m17 15 3 3-3 3"/></svg></div>
-          <h3>Smart completion</h3>
-          <p>File and project symbols, properties, keywords, snippets. It pops up on its own and accepts with one key.</p>
+          <h3>SwiftUI completion</h3>
+          <p>Views, modifiers, keywords, types and your project’s symbols. It opens on its own and accepts with a single key.</p>
         </article>
         <article class="card reveal">
-          <div class="icon cyan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-4 3 4 3M16 9l4 3-4 3M14 5l-4 14"/></svg></div>
-          <h3>Language detection</h3>
-          <p>iCode recognizes each file’s language and adapts highlighting, completion and diagnostics. Swift, JavaScript, TypeScript, Python, HTML, CSS and more.</p>
+          <div class="icon cyan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M3 9h18M9 20V9"/></svg></div>
+          <h3>Apps ready to run</h3>
+          <p>SwiftUI app, list-and-navigation app, Swift package: pick a template, give it a name, and your app is already running in the preview.</p>
         </article>
         <article class="card reveal">
           <div class="icon violet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></div>
           <h3>Navigation and refactoring</h3>
-          <p>Go to definition, find usages, go to symbol, project-wide rename, find and replace everywhere.</p>
+          <p>Go to definition, find usages, go to symbol, rename across the project, search and replace everywhere.</p>
         </article>
         <article class="card reveal">
-          <div class="icon green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="5" r="2"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="8" r="2"/><path d="M6 7v10M18 10c0 4-6 3-6 7"/></svg></div>
-          <h3>Always connected</h3>
-          <p>Clone, pull and push to GitHub, GitLab or your server, a live web preview, and the AI of your choice plugged in with your key.</p>
+          <div class="icon green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M8 13h8"/></svg></div>
+          <h3>Projects that remember</h3>
+          <p>Each project keeps its branch, your tabs, its tasks, its latest commits and a memory the assistant reads before helping you.</p>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- Fonctionnalités détaillées -->
-  <section class="alt">
+  <!-- Detailed features -->
+  <section class="alt" id="apercu">
     <div class="wrap">
       <div class="feature">
         <div class="feature-text reveal">
-          <span class="eyebrow">New design</span>
-          <h2>Code takes<br>the whole screen.</h2>
-          <p class="lead">Sidebar, tabs and actions float in Liquid Glass above your code, which scrolls underneath. Nothing hides what you write.</p>
+          <span class="eyebrow">SwiftUI preview</span>
+          <h2>Your code on the left.<br>Your app on the right.</h2>
+          <p class="lead">The built-in preview runs your SwiftUI views right on your iPhone or iPad and updates with every change. No Mac, no compiling: you touch your interface while you write it.</p>
           <ul class="checks">
-            <li>One main action, always in the same place</li>
-            <li>Branch, problems and position in one status pill</li>
-            <li>Every color means something: blue to act, orange modified, green added, red removed</li>
+            <li>Free, offline, on iPhone and iPad</li>
+            <li>Navigation, lists, grids, sheets, SwiftData, Charts, maps and remote images</li>
+            <li>Anything not supported yet is flagged, everything else renders</li>
           </ul>
         </div>
-        <div class="device-shot reveal"><div class="tablet land"><img src="../assets/maquettes/ipad-editeur.webp" width="1600" height="1118" loading="lazy" alt="iCode on iPad: full-screen code, glass file sidebar, completion and an inline warning"></div></div>
+        <div class="device-shot reveal"><div class="tablet"><img src="../assets/captures/en/ipad-apercu.webp" width="1100" height="1467" loading="lazy" alt="iCode on iPad: a shop’s SwiftUI code and its live preview with four products"></div></div>
       </div>
 
-      <div class="feature reverse">
+      <div class="feature reverse" id="runner">
         <div class="feature-text reveal">
-          <span class="eyebrow">Dev assistance</span>
-          <h2>It spots the bug<br>before you do.</h2>
-          <p class="lead">A variable never read, a misspelled name, a stray parenthesis: iCode underlines it as you type and tells you why, right on the line.</p>
+          <span class="eyebrow">iCode Runner · Pro</span>
+          <h2>The real Simulator,<br>in your hand.</h2>
+          <p class="lead">Install iCode Runner on your Mac. iCode sends it your project, Xcode builds it and runs it in the Simulator, and its screen streams live to your iPad or iPhone. You tap, you type, your app responds.</p>
           <ul class="checks">
-            <li>Live diagnostics and Problems panel <kbd>⌘</kbd><kbd>⇧</kbd><kbd>M</kbd></li>
-            <li>Completion that knows your project’s types</li>
-            <li>Search Everywhere <kbd>⌘</kbd><kbd>P</kbd> and command palette <kbd>⌘</kbd><kbd>⇧</kbd><kbd>P</kbd></li>
+            <li>Pick the iPhone or iPad to simulate, just like in Xcode</li>
+            <li>Build errors and logs sent back to iCode, on the right line</li>
+            <li>6-digit pairing, encrypted, on your local network</li>
           </ul>
+          <p class="feature-link"><a href="runner/">Download iCode Runner for Mac →</a></p>
         </div>
-        <div class="device-shot reveal"><div class="phone"><img src="../assets/maquettes/iphone-editeur.webp" width="780" height="1688" loading="lazy" alt="iCode on iPhone: completion, warning and status pill"></div></div>
+        <div class="reveal">
+          <div class="providers runner-card">
+            <div class="provider"><span class="mark" style="background:linear-gradient(135deg,#3a4150,#1b1f28)"><img src="../assets/runner.png" alt="" width="34" height="34"></span><div><strong>MacBook Pro</strong><small>iCode Runner · Xcode 26</small></div><span class="state">Connected</span></div>
+            <div class="provider"><span class="mark" style="background:#0A84FF"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg></span><div><strong>iPhone 17 Pro</strong><small>iOS 26 · Simulator</small></div><span class="state">Running</span></div>
+            <div class="provider"><span class="mark" style="background:#3a4150"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="4" y="2.5" width="16" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg></span><div><strong>iPad Pro 13-inch</strong><small>iOS 26 · Simulator</small></div><span class="state off">Choose</span></div>
+            <div class="provider build-log"><span class="mark" style="background:#30D158"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg></span><div><strong>Build succeeded</strong><small>shop · 4.2 s · 0 warnings</small></div><span class="state live">▶︎ Live</span></div>
+          </div>
+          <div class="ai-off"><span class="toggle" aria-hidden="true"></span>No Mac? The built-in SwiftUI preview stays free and works everywhere.</div>
+        </div>
       </div>
 
       <div class="feature">
         <div class="feature-text reveal">
-          <span class="eyebrow">Preview and assistant</span>
-          <h2>Your code on the left.<br>The result on the right.</h2>
-          <p class="lead">The web preview updates on every keystroke. Ask the assistant for a change: it edits your files, you keep or reject.</p>
+          <span class="eyebrow">Coding help</span>
+          <h2>It knows<br>what’s next.</h2>
+          <p class="lead">Type <code>.fo</code> and iCode offers <code>.font</code>, <code>.foregroundStyle</code> or <code>ForEach</code>, with their types. It knows SwiftUI and your project’s types.</p>
           <ul class="checks">
-            <li>Live preview of your HTML, CSS and JavaScript pages</li>
-            <li>Lines added by the assistant shown in green in the editor</li>
-            <li>Keep or Reject, file by file</li>
+            <li>Live diagnostics and Problems panel <kbd>⌘</kbd><kbd>⇧</kbd><kbd>M</kbd></li>
+            <li>Go to definition and find a symbol’s usages</li>
+            <li>Search everywhere <kbd>⌘</kbd><kbd>P</kbd> and command palette <kbd>⌘</kbd><kbd>⇧</kbd><kbd>P</kbd></li>
           </ul>
         </div>
-        <div class="device-shot reveal"><div class="tablet land"><img src="../assets/maquettes/ipad-apercu.webp" width="1600" height="1118" loading="lazy" alt="iCode on iPad: code, a shop’s web preview and the assistant with Keep and Reject buttons"></div></div>
+        <div class="device-shot reveal"><div class="phone"><img src="../assets/captures/en/iphone-completion.webp" width="780" height="1695" loading="lazy" alt="iCode on iPhone: SwiftUI completion offering ForEach, font and foregroundStyle"></div></div>
       </div>
     </div>
   </section>
 
-  <!-- Clavier -->
+  <!-- Keyboard -->
   <section id="clavier">
     <div class="wrap">
       <div class="section-head center reveal">
         <span class="eyebrow">Magic Keyboard</span>
-        <h2>Your shortcuts.<br><span class="gradient-text">Your reflexes.</span></h2>
-        <p class="lead">Attach a keyboard to your iPad and get the JetBrains and VS Code shortcuts you know. Hold <kbd>⌘</kbd> to see them all.</p>
+        <h2>Your shortcuts.<br><span class="gradient-text">Your muscle memory.</span></h2>
+        <p class="lead">Plug a keyboard into your iPad and get the shortcuts from Xcode, JetBrains and VS Code. Hold <kbd>⌘</kbd> to see them all.</p>
       </div>
       <div class="keybar reveal" aria-label="Code key bar above the software keyboard">
-        <kbd>⇥</kbd><kbd>{</kbd><kbd>}</kbd><kbd>(</kbd><kbd>)</kbd><kbd>[</kbd><kbd>]</kbd><kbd>=</kbd><kbd>"</kbd><kbd>;</kbd><kbd>&lt;</kbd><kbd>&gt;</kbd><kbd>/</kbd><kbd>←</kbd><kbd>→</kbd>
+        <kbd>⇥</kbd><kbd>{</kbd><kbd>}</kbd><kbd>(</kbd><kbd>)</kbd><kbd>[</kbd><kbd>]</kbd><kbd>=</kbd><kbd>"</kbd><kbd>.</kbd><kbd>$</kbd><kbd>@</kbd><kbd>-&gt;</kbd><kbd>←</kbd><kbd>→</kbd>
       </div>
       <div class="keys" id="keys">
-        <div class="key reveal" data-combo="meta+p"><span>Search Everywhere</span><span><kbd>⌘</kbd><kbd>P</kbd></span></div>
+        <div class="key reveal" data-combo="meta+p"><span>Search everywhere</span><span><kbd>⌘</kbd><kbd>P</kbd></span></div>
         <div class="key reveal" data-combo="meta+shift+p"><span>Command palette</span><span><kbd>⌘</kbd><kbd>⇧</kbd><kbd>P</kbd></span></div>
         <div class="key reveal" data-combo="meta+shift+o"><span>Go to symbol</span><span><kbd>⌘</kbd><kbd>⇧</kbd><kbd>O</kbd></span></div>
-        <div class="key reveal" data-combo="meta+shift+f"><span>Find in project</span><span><kbd>⌘</kbd><kbd>⇧</kbd><kbd>F</kbd></span></div>
+        <div class="key reveal" data-combo="meta+shift+f"><span>Search in project</span><span><kbd>⌘</kbd><kbd>⇧</kbd><kbd>F</kbd></span></div>
         <div class="key reveal" data-combo="meta+shift+m"><span>Problems</span><span><kbd>⌘</kbd><kbd>⇧</kbd><kbd>M</kbd></span></div>
         <div class="key reveal" data-combo="meta+shift+e"><span>Explorer</span><span><kbd>⌘</kbd><kbd>⇧</kbd><kbd>E</kbd></span></div>
         <div class="key reveal" data-combo="ctrl+shift+g"><span>Git</span><span><kbd>⌃</kbd><kbd>⇧</kbd><kbd>G</kbd></span></div>
-        <div class="key reveal" data-combo="meta+7"><span>File outline</span><span><kbd>⌘</kbd><kbd>7</kbd></span></div>
+        <div class="key reveal" data-combo="meta+7"><span>File structure</span><span><kbd>⌘</kbd><kbd>7</kbd></span></div>
         <div class="key reveal" data-combo="meta+alt+i"><span>AI assistant</span><span><kbd>⌘</kbd><kbd>⌥</kbd><kbd>I</kbd></span></div>
       </div>
       <p class="key-hint reveal">Try it: press <kbd>⌘</kbd><kbd>⇧</kbd><kbd>P</kbd> (or <kbd>Ctrl</kbd><kbd>⇧</kbd><kbd>P</kbd>) now.</p>
@@ -205,7 +214,7 @@
       <div class="section-head center reveal">
         <span class="eyebrow">Built-in Git</span>
         <h2>Git, just like on your Mac.</h2>
-        <p class="lead">Inspired by GitHub Desktop. Check your files, review the diff, write your message, commit. Branches and merges are one tap away.</p>
+        <p class="lead">Inspired by GitHub Desktop. Check your files, review the diff, write your message, commit. Branches, merges and your pull requests are one tap away.</p>
       </div>
       <div class="feature">
         <div class="graph-card graph reveal" id="graph">
@@ -221,26 +230,26 @@
             <g class="node" style="transition-delay:1.7s"><circle cx="420" cy="60" r="12" fill="#05070C" stroke="#30D158" stroke-width="4"/></g>
             <text x="40" y="34">main</text>
             <text x="190" y="206">feature/cart</text>
-            <text class="mono" x="190" y="226">Add the cart</text>
-            <text class="mono" x="340" y="206">Promo codes</text>
-            <text x="388" y="34" fill="#30D158" style="fill:#30D158">Merged ✓</text>
+            <text class="mono" x="190" y="226">Cart: add, remove</text>
+            <text class="mono" x="340" y="206">% discount</text>
+            <text x="388" y="34" fill="#30D158" style="fill:#30D158">PR #12 ✓</text>
             <text class="mono" x="40" y="280">3f2a9c1 · a71e0d4 · 9b4c2e8 · 5d10f3a</text>
           </svg>
           <div class="graph-legend">
             <span class="chip"><i style="background:#0A84FF"></i>Commit</span>
             <span class="chip"><i style="background:#8E7CFF"></i>Branches</span>
-            <span class="chip"><i style="background:#30D158"></i>Merge</span>
+            <span class="chip"><i style="background:#30D158"></i>Pull request</span>
             <span class="chip"><i style="background:#64D2FF"></i>Clone, pull, push</span>
           </div>
         </div>
         <div class="feature-text reveal">
           <ul class="checks">
             <li>Check changes file by file, with their diff</li>
-            <li>Commit with summary and description on the current branch</li>
+            <li>Commit with summary and description, amend, revert and stash</li>
             <li>Commit history and the details of every change</li>
-            <li>Create, switch and merge branches</li>
-            <li>Clone, fetch, pull and push over HTTPS to GitHub, GitLab or your own server</li>
-            <li>A native Git engine written for iOS: no terminal to install</li>
+            <li>Create, switch and merge branches, resolve conflicts</li>
+            <li>Clone, fetch, pull and push to GitHub, GitLab or your own server</li>
+            <li>GitHub pull requests: description, checks, files and conversation</li>
           </ul>
         </div>
       </div>
@@ -248,41 +257,69 @@
         <div class="feature-text reveal">
           <span class="eyebrow">Git panel</span>
           <h2>Review. Check.<br>Commit.</h2>
-          <p class="lead">A side-by-side diff, hunk by hunk, labelled with the function it touches. Revert a hunk with one tap, let the assistant write your message, then commit.</p>
+          <p class="lead">The diff hunk by hunk, with the name of the function it touches. Let the assistant write your message, commit, push, then follow your pull request and its checks without leaving iCode.</p>
         </div>
         <div class="device-shot duo reveal">
-          <div class="tablet land"><img src="../assets/maquettes/ipad-git.webp" width="1600" height="1118" loading="lazy" alt="Git on iPad: checked changed files, commit message and side-by-side diff"></div>
-          <div class="phone"><img src="../assets/maquettes/iphone-git.webp" width="780" height="1688" loading="lazy" alt="Git on iPhone: three changes and the Commit button"></div>
+          <div class="tablet"><img src="../assets/captures/en/ipad-pr-detail.webp" width="1100" height="1467" loading="lazy" alt="iCode on iPad: pull request #12, its description and its build, lint and test checks"></div>
+          <div class="phone"><img src="../assets/captures/en/iphone-git.webp" width="780" height="1695" loading="lazy" alt="Git on iPhone: the feature/cart branch, three changed files and the Commit button"></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- IA -->
+  <!-- AI -->
   <section id="ia">
     <div class="wrap">
       <div class="feature">
         <div class="feature-text reveal">
           <span class="eyebrow">AI, if you want it</span>
-          <h2>Your AI.<br><span class="gradient-text">Your key. Your call.</span></h2>
-          <p class="lead">iCode works great without AI. If you want it, plug in your favorite provider with your own API key. An assistant reads and edits your files, and you approve every change.</p>
+          <h2>Your AI.<br><span class="gradient-text">Your choice. Or none.</span></h2>
+          <p class="lead">iCode comes with Apple’s AI, right on the device: free, private, no key needed. With Pro, plug in Claude, ChatGPT, Gemini, Mistral or your own server. The agent reads and edits your Swift files, and you approve every change.</p>
           <ul class="checks">
-            <li>Keys stored in the device Keychain</li>
+            <li>Dictate your request, the agent takes care of the rest</li>
+            <li>Every answer shows which AI wrote it</li>
+            <li>Keys checked when saved and stored in the Keychain</li>
             <li>Requests go straight to the provider, never through our servers</li>
-            <li>You pick the model and pay the provider for what you use</li>
-            <li>A local or self-hosted OpenAI-compatible server works too</li>
           </ul>
         </div>
         <div class="reveal">
           <div class="providers">
-            <div class="provider"><span class="mark" style="background:#D97757">C</span><div><strong>Claude</strong><small>Anthropic</small></div><span class="state">Key saved</span></div>
-            <div class="provider"><span class="mark" style="background:#10A37F">G</span><div><strong>ChatGPT</strong><small>OpenAI</small></div><span class="state off">Add a key</span></div>
-            <div class="provider"><span class="mark" style="background:linear-gradient(135deg,#4285F4,#9B72CB)">G</span><div><strong>Gemini</strong><small>Google</small></div><span class="state off">Add a key</span></div>
-            <div class="provider"><span class="mark" style="background:#FA520F">M</span><div><strong>Mistral</strong><small>Mistral AI</small></div><span class="state off">Add a key</span></div>
-            <div class="provider"><span class="mark" style="background:#6467F2">O</span><div><strong>OpenRouter</strong><small>hundreds of models</small></div><span class="state off">Add a key</span></div>
-            <div class="provider"><span class="mark" style="background:#3a4150">⚙</span><div><strong>Your server</strong><small>OpenAI-compatible</small></div><span class="state off">Set up</span></div>
+            <div class="provider"><span class="mark" style="background:linear-gradient(135deg,#FF9F0A,#FF375F 45%,#BF5AF2 75%,#0A84FF)"><svg viewBox="0 0 24 24" width="17" height="17" fill="#fff" aria-hidden="true"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/></svg></span><div><strong>Apple’s AI</strong><small>on-device · free</small></div><span class="state">On</span></div>
+            <div class="provider"><span class="mark" style="background:#D97757">C</span><div><strong>Claude</strong><small>Anthropic · Pro</small></div><span class="state">Valid key</span></div>
+            <div class="provider"><span class="mark" style="background:#10A37F">G</span><div><strong>ChatGPT</strong><small>OpenAI · Pro</small></div><span class="state off">Add a key</span></div>
+            <div class="provider"><span class="mark" style="background:linear-gradient(135deg,#4285F4,#9B72CB)">G</span><div><strong>Gemini</strong><small>Google · Pro</small></div><span class="state off">Add a key</span></div>
+            <div class="provider"><span class="mark" style="background:#FA520F">M</span><div><strong>Mistral</strong><small>Mistral AI · Pro</small></div><span class="state off">Add a key</span></div>
+            <div class="provider"><span class="mark" style="background:#6467F2">O</span><div><strong>OpenRouter</strong><small>hundreds of models · Pro</small></div><span class="state off">Add a key</span></div>
+            <div class="provider"><span class="mark" style="background:#3a4150">⚙</span><div><strong>Your server</strong><small>OpenAI-compatible · Pro</small></div><span class="state off">Set up</span></div>
           </div>
-          <div class="ai-off"><span class="toggle" aria-hidden="true"></span>No AI? Nothing changes: the editor and Git stay fully featured.</div>
+          <div class="ai-off"><span class="toggle" aria-hidden="true"></span>No AI? Nothing changes: the editor, the preview and Git stay complete.</div>
+        </div>
+      </div>
+
+      <div class="feature reverse" id="donnees">
+        <div class="feature-text reveal">
+          <span class="eyebrow">Databases · Pro</span>
+          <h2>Your data,<br>one query away.</h2>
+          <p class="lead">Open your preview’s SwiftData store, the database of the app running in the Simulator, or your PostgreSQL and MySQL servers. Browse tables, write your SQL, or let the AI write it for you.</p>
+          <ul class="checks">
+            <li>SQLite, SwiftData, PostgreSQL, MySQL and MariaDB</li>
+            <li>The assistant reads the schema, runs queries and creates tables</li>
+            <li>Production connections are read-only, passwords stay in the Keychain</li>
+          </ul>
+        </div>
+        <div class="reveal">
+          <div class="providers db-card">
+            <div class="provider"><span class="mark" style="background:#0A84FF">S</span><div><strong>preview</strong><small>SwiftData · 3 tables</small></div><span class="state">Open</span></div>
+            <div class="provider"><span class="mark" style="background:#5E5CE6">S</span><div><strong>simulator/shop</strong><small>SQLite · iPhone 17 Pro</small></div><span class="state off">Open</span></div>
+            <div class="provider"><span class="mark" style="background:#336791">P</span><div><strong>shop-staging</strong><small>PostgreSQL 17</small></div><span class="state off">Connect</span></div>
+            <div class="provider"><span class="mark" style="background:#FF453A">M</span><div><strong>production</strong><small>MySQL · read-only</small></div><span class="state ro">Protected</span></div>
+          </div>
+          <pre class="sql-card" aria-label="SQL query and its result"><span class="k">SELECT</span> name, price <span class="k">FROM</span> product
+<span class="k">WHERE</span> price &lt; <span class="n">20</span> <span class="k">ORDER BY</span> price;
+<span class="c">── 3 rows · 2 ms ──────────────────</span>
+Notebook    <span class="n">8.50</span>
+Mug        <span class="n">12.00</span>
+Poster     <span class="n">19.00</span></pre>
         </div>
       </div>
     </div>
@@ -294,13 +331,13 @@
       <div class="section-head center reveal">
         <span class="eyebrow">Native iOS 26</span>
         <h2>Made for your iPhone.<br><span class="gradient-text">Down to the last pixel.</span></h2>
-        <p class="lead">SwiftUI, Liquid Glass, widgets, Live Activities and Dynamic Island. iCode feels like an Apple app.</p>
+        <p class="lead">SwiftUI, Liquid Glass, widgets, Live Activities and the Dynamic Island. iCode behaves like an app made by Apple.</p>
       </div>
       <div class="island-stage">
         <div class="island-card reveal" id="island-card">
           <div class="island" id="island">
             <span class="l"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><path d="M6 9v3a6 6 0 0 0 6 6h3"/></svg>Push</span>
-            <span class="r mono" id="island-pct">0 %</span>
+            <span class="r mono" id="island-pct">0%</span>
             <div class="full">
               <div class="row"><img class="appi" src="../assets/icone.png" alt=""><span id="island-title">Pushing to origin</span><small id="island-sub">feature/cart</small></div>
               <div class="meta" id="island-meta">3 commits · 24 objects</div>
@@ -309,42 +346,40 @@
           </div>
           <div class="island-caption">
             <h3>Dynamic Island and Live Activities</h3>
-            <p>Clone, pull, push and AI replies keep going while you do something else. Follow it all from the Lock Screen.</p>
+            <p>Clone, pull, push and AI answers keep going while you do something else. Follow it all from the Lock Screen.</p>
           </div>
         </div>
         <div class="widgets">
           <div class="widget reveal"><small>Current project</small><strong>shop</strong><span class="mono">feature/cart<br>3 to commit · 2 to push</span></div>
           <div class="widget reveal"><small>Activity</small><strong>42 commits</strong><div class="spark" aria-hidden="true"><i style="height:30%"></i><i style="height:55%"></i><i style="height:40%"></i><i style="height:80%"></i><i style="height:65%"></i><i style="height:100%"></i><i style="height:72%"></i></div></div>
-          <div class="widget wide reveal"><small>Git history</small><strong>Add promo codes to the cart</strong><span class="mono">a71e0d4 · 4 min ago</span></div>
+          <div class="widget wide reveal"><small>Git history</small><strong>Format prices in euros</strong><span class="mono">a71e0d4 · 4 min ago</span></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Toutes les tailles -->
+  <!-- All sizes -->
   <section id="tailles">
     <div class="wrap">
       <div class="section-head center reveal">
-        <span class="eyebrow">One design, every size</span>
+        <span class="eyebrow">One interface, every size</span>
         <h2>From thumb to big screen.</h2>
-        <p class="lead">One design that folds: one column on iPhone, two panes on an open foldable, the sidebar on iPad, and a Mac version in the works.</p>
+        <p class="lead">One interface that adapts: thumb-friendly tabs on iPhone, the sidebar and the preview side by side on iPad, and a real desktop layout on Mac, available to download soon.</p>
       </div>
-      <div class="sizes">
-        <figure class="reveal"><div class="phone"><img src="../assets/maquettes/iphone-accueil.webp" width="780" height="1688" loading="lazy" alt="iCode home on iPhone: current project and recent projects"></div><figcaption>iPhone</figcaption></figure>
-        <figure class="reveal"><div class="fold"><img src="../assets/maquettes/pliable.webp" width="1300" height="1338" loading="lazy" alt="iCode on an open foldable iPhone: code on one side of the fold, preview on the other"></div><figcaption>Foldable iPhone, open</figcaption></figure>
-        <figure class="reveal"><div class="tablet"><img src="../assets/maquettes/ipad-etroit.webp" width="900" height="1173" loading="lazy" alt="iCode in a narrow iPad window, in Split View"></div><figcaption>iPad in Split View</figcaption></figure>
+      <div class="sizes two">
+        <figure class="reveal"><div class="phone"><img src="../assets/captures/en/iphone-projets.webp" width="780" height="1695" loading="lazy" alt="iCode projects on iPhone: the shop project, its memory, its tasks and its latest commits"></div><figcaption>iPhone</figcaption></figure>
+        <figure class="reveal"><div class="tablet"><img src="../assets/captures/en/ipad-projets-nouveau.webp" width="1100" height="1467" loading="lazy" alt="New project on iPad: SwiftUI App, List App, Swift Package and Empty templates"></div><figcaption>iPad</figcaption></figure>
       </div>
-      <figure class="mac reveal"><div class="macwin"><img src="../assets/maquettes/mac.webp" width="1600" height="1000" loading="lazy" alt="Proposed iCode for Mac: three columns, test output and Git panel"></div><figcaption>Mac, in the works</figcaption></figure>
     </div>
   </section>
 
-  <!-- Galerie -->
+  <!-- Gallery -->
   <section id="galerie">
     <div class="wrap">
       <div class="section-head center reveal">
-        <span class="eyebrow">Screenshots</span>
+        <span class="eyebrow">In pictures</span>
         <h2>Native, fast, beautiful.</h2>
-        <p class="lead">iCode’s new design, screen by screen.</p>
+        <p class="lead">iCode, screen by screen.</p>
       </div>
       <div class="gallery-stage reveal" id="gallery">
         <div class="seg" role="group" aria-label="Device">
@@ -353,20 +388,20 @@
         </div>
         <div class="gallery-tabs" role="tablist" aria-label="App screens"></div>
         <figure>
-          <div class="frame tablet land" id="gallery-frame"><img id="gallery-img" src="../assets/maquettes/ipad-editeur.webp" width="1600" height="1118" loading="lazy" alt="iCode screen"></div>
+          <div class="frame tablet" id="gallery-frame"><img id="gallery-img" src="../assets/captures/en/ipad-editor.webp" width="1100" height="1467" loading="lazy" alt="iCode screen"></div>
           <figcaption id="gallery-caption" aria-live="polite"></figcaption>
         </figure>
       </div>
     </div>
   </section>
 
-  <!-- Tarifs -->
+  <!-- Pricing -->
   <section id="tarifs" class="alt">
     <div class="wrap">
       <div class="section-head center reveal">
         <span class="eyebrow">Pricing</span>
-        <h2>Free to code.<br><span class="gradient-text">Pro to go further.</span></h2>
-        <p class="lead">The editor, code intelligence, local Git and AI with your key are free. Pro adds remote Git, multiple AIs, agent mode, SSH and iCloud.</p>
+        <h2>Free to build.<br><span class="gradient-text">Pro to go further.</span></h2>
+        <p class="lead">The Swift editor, the SwiftUI preview, local Git and on-device AI are free. Pro adds the real Simulator, network Git and pull requests, every AI provider and databases.</p>
       </div>
       <div class="pricing">
         <div class="plan reveal">
@@ -374,42 +409,43 @@
           <div class="price">€0</div>
           <div class="price-note">Forever</div>
           <ul>
-            <li>Full editor and code completion</li>
+            <li>Full Swift editor and SwiftUI completion</li>
+            <li>Live SwiftUI preview</li>
             <li>Navigation, refactoring and diagnostics</li>
             <li>Local Git: commits, branches, history</li>
-            <li>AI assistant with your key, one provider</li>
-            <li>Keyboard shortcuts and code key bar</li>
+            <li>Apple’s on-device AI</li>
           </ul>
-          <a class="btn btn-ghost" href="#top">Coming soon</a>
+          <a class="btn btn-ghost" href="support/">Join the beta</a>
         </div>
         <div class="plan featured reveal">
           <span class="badge">BEST VALUE</span>
           <h3>Pro yearly</h3>
           <div class="price">€39.99 <small>/ year</small></div>
-          <div class="price-note">€3.33 a month · save 33%</div>
+          <div class="price-note">Just €3.33 a month · 2 months free</div>
           <ul>
             <li>Everything in Free</li>
-            <li>Clone, pull and push to your remotes</li>
-            <li>Multiple AI providers and agent mode</li>
-            <li>SSH to your servers (coming soon)</li>
-            <li>iCloud project sync (coming soon)</li>
+            <li>iCode Runner: the real Simulator from your Mac</li>
+            <li>Clone, pull, push and GitHub pull requests</li>
+            <li>Claude, ChatGPT, Gemini, Mistral and your server</li>
+            <li>SQLite, PostgreSQL and MySQL databases</li>
+            <li>Projects shared with iCloud and SharePlay</li>
           </ul>
-          <a class="btn btn-primary" href="#top">Coming soon</a>
+          <a class="btn btn-primary" href="support/">Join the TestFlight beta</a>
         </div>
         <div class="plan reveal">
-          <h3>Pro monthly</h3>
+          <h3>Pro monthly or lifetime</h3>
           <div class="price">€4.99 <small>/ month</small></div>
           <div class="price-note">No commitment · or €99 once, for life</div>
           <ul>
             <li>Everything in Pro yearly</li>
-            <li>Billed monthly</li>
-            <li>Cancel anytime from the App Store</li>
-            <li>Your projects stay on your device when it ends</li>
+            <li>Monthly: cancel anytime from the App Store</li>
+            <li>Lifetime: one purchase, every Pro update</li>
+            <li>Your projects stay on your device, no matter what</li>
           </ul>
-          <a class="btn btn-ghost" href="#top">Coming soon</a>
+          <a class="btn btn-ghost" href="support/">Join the beta</a>
         </div>
       </div>
-      <p class="pricing-foot">Launch prices including French VAT; local prices may vary. Auto-renewing subscription, managed and cancelled from your App Store account settings. Lifetime is a one-time purchase. AI usage is billed by the provider you choose.</p>
+      <p class="pricing-foot">Launch prices in France, VAT included, bought in the app; prices may vary by country. Subscriptions renew automatically and are managed and cancelled from your Apple Account settings. Lifetime is a one-time payment. With your own key, AI usage is billed by the provider you choose. iCode Runner requires a Mac with Xcode.</p>
     </div>
   </section>
 
@@ -422,24 +458,28 @@
       </div>
       <div class="faq">
         <details class="reveal">
+          <summary>Can I really build a Swift app on iPhone or iPad?</summary>
+          <p>Yes. You write your app in Swift and SwiftUI in iCode and watch it run in the built-in preview, with no Mac. To build it and run it in the real Simulator, iCode Runner does the work on your Mac (Pro). Your project stays a standard Swift project that you can also open in Xcode.</p>
+        </details>
+        <details class="reveal">
+          <summary>What is iCode Runner?</summary>
+          <p>A small free Mac app, signed and notarized by Apple. It receives your project from iCode, builds it with Xcode, runs it in the Simulator of your choice and streams its screen back to your iPad or iPhone. You need a Mac on macOS 14 or later with Xcode, on the same network. <a href="runner/">Download iCode Runner</a>.</p>
+        </details>
+        <details class="reveal">
           <summary>Do I need AI to use iCode?</summary>
-          <p>No. iCode is first a complete code editor and Git client. The AI assistant is optional: it only turns on once you add a provider key.</p>
+          <p>No. iCode is first a complete development environment and Git client. On Apple Intelligence devices, Apple’s AI is included for free and runs on the device. With Pro, you can plug in Claude, ChatGPT, Gemini, Mistral, OpenRouter or your own server with your key.</p>
         </details>
         <details class="reveal">
           <summary>Where are my projects and API keys?</summary>
-          <p>On your device. Projects are stored locally and keys in the iOS Keychain. iCode has no server: when you use AI, the request goes straight from your device to the provider you picked. Details in our <a href="privacy/">privacy policy</a>.</p>
+          <p>On your device. Projects are stored locally, keys and database passwords in the iOS Keychain. iCode has no server: when you use an online AI, the request goes straight from your device to the provider you chose. Details are in our <a href="privacy/">privacy policy</a>.</p>
         </details>
         <details class="reveal">
           <summary>Which Git services does iCode work with?</summary>
-          <p>GitHub, GitLab, Bitbucket, Gitea or your own server: any repository reachable over HTTPS. For a private repository, you use a personal access token.</p>
-        </details>
-        <details class="reveal">
-          <summary>Can I run my code?</summary>
-          <p>The live preview renders your HTML, CSS and JavaScript pages next to the code. Beyond that, iCode focuses on writing, navigating and Git.</p>
+          <p>GitHub, GitLab, Bitbucket, Gitea or your own server: any repository reachable over HTTPS. For a private repository, use a personal access token. Pull requests are supported for GitHub.</p>
         </details>
         <details class="reveal">
           <summary>Which devices does iCode run on?</summary>
-          <p>iPhone, foldable iPhone and iPad on iOS 17 or later. Liquid Glass, Live Activities and the Dynamic Island shine on iOS 26 and supported devices.</p>
+          <p>iPhone and iPad on iOS 17 or later. Liquid Glass, Live Activities and the Dynamic Island shine on iOS 26, and Apple’s AI needs an Apple Intelligence device. A Mac version is coming soon.</p>
         </details>
         <details class="reveal">
           <summary>How do I join the beta?</summary>
@@ -449,13 +489,13 @@
     </div>
   </section>
 
-  <!-- Appel final -->
+  <!-- Final call -->
   <section>
     <div class="wrap">
       <div class="cta-final reveal">
         <img src="../assets/icone.png" alt="" width="92" height="92">
-        <h2>Your next commit<br>ships from your pocket.</h2>
-        <p class="lead">A real IDE and Git, on iPhone and iPad. No compromises.</p>
+        <h2>Your next app<br>starts in your pocket.</h2>
+        <p class="lead">A real Swift IDE, live preview, the Simulator and Git, on iPhone and iPad.</p>
         <a class="btn btn-primary" href="support/">Join the TestFlight beta</a>
       </div>
     </div>
@@ -470,6 +510,7 @@
       <a href="privacy/">Privacy</a>
       <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Terms of use</a>
       <a href="support/">Support</a>
+      <a href="runner/">iCode Runner</a>
       <a href="../" onclick="try{localStorage.setItem('icode-lang','fr')}catch(e){}">Français</a>
     </nav>
   </div>
@@ -478,16 +519,24 @@
 <script>
   window.ICODE_GALLERY = {
     ipad: [
-      ['ipad-editeur', 'Editor', 'Full-screen code, glass sidebar and tabs, the status pill at the bottom.', 'tablet land'],
-      ['ipad-git', 'Git and diff', 'Checkable files, commit message and a side-by-side diff, hunk by hunk.', 'tablet land'],
-      ['ipad-apercu', 'Preview and assistant', 'Live web preview, and an assistant that proposes while you keep or reject.', 'tablet land'],
-      ['ipad-etroit', 'Narrow window', 'In Split View, a rail replaces the sidebar.', 'tablet']
+      ['ipad-editor', 'Editor', 'Full-screen Swift code, the glass sidebar and tabs, the status pill at the bottom.'],
+      ['ipad-apercu', 'SwiftUI preview', 'Your SwiftUI interface next to the code, updated with every change.'],
+      ['ipad-completion', 'Completion', 'SwiftUI completion, with the type of every suggestion.'],
+      ['ipad-problems', 'Problems', 'The project’s errors, warnings and TODOs, grouped and clickable.'],
+      ['ipad-git', 'Git', 'Checkbox staging, commit message and history, on the current branch.'],
+      ['ipad-pr-detail', 'Pull request', 'A GitHub pull request: description, checks, files and conversation.'],
+      ['ipad-assistant', 'Assistant', 'Describe a change: the agent edits your files and you see the result in the preview.'],
+      ['ipad-palette', 'Search everywhere', 'Files, symbols and commands, one ⌘P away.'],
+      ['ipad-projets-nouveau', 'Projects', 'Your projects, their memory, and a new project from a SwiftUI template.']
     ],
     iphone: [
-      ['iphone-accueil', 'Home', 'Pick up your project where you left it.', 'phone'],
-      ['iphone-editeur', 'Editor', 'Code, completion and the status pill, under your thumb.', 'phone'],
-      ['iphone-git', 'Git', 'Changes, message and Commit, on one screen.', 'phone'],
-      ['pliable', 'Foldable, open', 'Code on one side of the fold, preview on the other.', 'fold']
+      ['iphone-editor', 'Editor', 'Swift code and the status pill, under your thumb.'],
+      ['iphone-apercu', 'SwiftUI preview', 'Your app, live, one tab away from the code.'],
+      ['iphone-completion', 'Completion', 'ForEach, font, foregroundStyle: completion knows SwiftUI.'],
+      ['iphone-git', 'Git', 'Changes, message and Commit, on one screen.'],
+      ['iphone-pr-detail', 'Pull request', 'Review a pull request and its checks, wherever you are.'],
+      ['iphone-assistant', 'Assistant', 'What do you want to build? Say it, or dictate it.'],
+      ['iphone-projets', 'Projects', 'Pick up your project right where you left it.']
     ]
   };
 </script>
