@@ -502,6 +502,23 @@ footer a { color: var(--text-2); }
 .fold img { border-radius: 28px; }
 .duo .tablet.land { margin-right: 18%; }
 .duo .phone { width: 30%; bottom: -60px; }
+
+/* Captures réelles (iPad en portrait), Runner, bases de données */
+.duo .tablet:not(.land) { width: min(78%, 470px); }
+.feature .device-shot .tablet:not(.land) { width: min(100%, 480px); margin-inline: auto; }
+.feature .device-shot .phone { margin-inline: auto; }
+.duo .tablet:not(.land) + .phone { width: 36%; right: 0; bottom: -40px; }
+.sizes.two { grid-template-columns: 0.62fr 1fr; max-width: 820px; margin-inline: auto; }
+.sizes.two figure:nth-child(2) { grid-column: auto; grid-row: auto; }
+.feature-link { margin-top: 22px; font-weight: 600; }
+.feature-link a { color: var(--accent-2); text-decoration: none; }
+.feature-link a:hover { text-decoration: underline; }
+.feature-text .lead code { font-family: var(--mono); font-size: .88em; padding: 1px 6px; border-radius: 6px; background: rgba(255,255,255,.07); color: #A9B7FF; }
+.provider .mark img { width: 34px; height: 34px; border-radius: 10px; display: block; }
+.provider .state.ro { color: #FF9F0A; background: rgba(255,159,10,.12); }
+.provider .state.live { color: #fff; background: var(--accent); }
+.sql-card { margin: 18px 0 0; padding: 18px 20px; border-radius: 16px; background: rgba(5,7,12,.7); box-shadow: inset 0 0 0 1px var(--stroke); font: 13.5px/1.7 var(--mono); color: var(--text-2); overflow-x: auto; white-space: pre; }
+@media (max-width: 900px) { .sizes.two { grid-template-columns: 0.62fr 1fr; gap: 16px; } }
 .sizes { display: grid; grid-template-columns: 0.8fr 1.5fr 1.1fr; gap: 34px; align-items: end; }
 .sizes figure, figure.mac { margin: 0; display: flex; flex-direction: column; align-items: center; }
 .sizes .phone, .sizes .fold, .sizes .tablet { width: 100%; }
