@@ -385,13 +385,19 @@ Affiche    <span class="n">19.00</span></pre>
         <p class="lead">iCode, écran par écran.</p>
       </div>
       <div class="gallery-stage reveal" id="gallery">
-        <div class="seg" role="group" aria-label="Appareil">
-          <button type="button" data-device="ipad" aria-pressed="true">iPad</button>
-          <button type="button" data-device="iphone" aria-pressed="false">iPhone</button>
+        <div class="gallery-controls">
+          <div class="seg" role="group" aria-label="Appareil">
+            <button type="button" data-device="ipad" aria-pressed="true">iPad</button>
+            <button type="button" data-device="iphone" aria-pressed="false">iPhone</button>
+          </div>
+          <div class="seg seg-ori" role="group" aria-label="Orientation">
+            <button type="button" data-ori="port" aria-pressed="false"><i class="ori-ico port" aria-hidden="true"></i>Portrait</button>
+            <button type="button" data-ori="land" aria-pressed="true"><i class="ori-ico land" aria-hidden="true"></i>Paysage</button>
+          </div>
         </div>
         <div class="gallery-tabs" role="tablist" aria-label="Écrans de l’application"></div>
         <figure>
-          <div class="frame tablet" id="gallery-frame"><img id="gallery-img" src="assets/captures/fr/ipad-editor.webp" width="1100" height="1467" loading="lazy" alt="Écran d’iCode"></div>
+          <div class="frame tablet land" id="gallery-frame" title="Écran suivant"><div class="screen"><img class="is-on" src="assets/captures/fr/ipadl-editor.webp" width="1600" height="1200" loading="lazy" alt="Écran d’iCode"></div></div>
           <figcaption id="gallery-caption" aria-live="polite"></figcaption>
         </figure>
       </div>
@@ -520,26 +526,27 @@ Affiche    <span class="n">19.00</span></pre>
 </footer>
 
 <script>
+  // [capture, onglet, légende] : chaque écran existe en portrait (ipad-, iphone-) et en paysage (ipadl-, iphonel-).
   window.ICODE_GALLERY = {
     ipad: [
-      ['ipad-editor', 'Éditeur', 'Le code Swift plein écran, la barre latérale et les onglets en verre, la pastille d’état en bas.'],
-      ['ipad-apercu', 'Aperçu SwiftUI', 'Ton interface SwiftUI à côté du code, mise à jour à chaque modification.'],
-      ['ipad-completion', 'Complétion', 'La complétion SwiftUI, avec le type de chaque proposition.'],
-      ['ipad-problems', 'Problèmes', 'Erreurs, avertissements et TODO du projet, regroupés et cliquables.'],
-      ['ipad-git', 'Git', 'Fichiers à cocher, message de commit et historique, sur la branche courante.'],
-      ['ipad-pr-detail', 'Pull request', 'Une pull request GitHub : description, vérifications, fichiers et conversation.'],
-      ['ipad-assistant', 'Assistant', 'Décris un changement : l’agent modifie tes fichiers et tu vois le résultat dans l’aperçu.'],
-      ['ipad-palette', 'Rechercher partout', 'Fichiers, symboles et commandes, au bout de ⌘P.'],
-      ['ipad-projets-nouveau', 'Projets', 'Tes projets, leur mémoire, et un nouveau projet à partir d’un modèle SwiftUI.']
+      ['editor', 'Éditeur', 'Le code Swift plein écran, la barre latérale et les onglets en verre, la pastille d’état en bas.'],
+      ['apercu', 'Aperçu SwiftUI', 'Ton interface SwiftUI à côté du code, mise à jour à chaque modification.'],
+      ['completion', 'Complétion', 'La complétion SwiftUI, avec le type de chaque proposition.'],
+      ['problems', 'Problèmes', 'Erreurs, avertissements et TODO du projet, regroupés et cliquables.'],
+      ['git', 'Git', 'Fichiers à cocher, message de commit et historique, sur la branche courante.'],
+      ['pr-detail', 'Pull request', 'Une pull request GitHub : description, vérifications, fichiers et conversation.'],
+      ['assistant', 'Assistant', 'Décris un changement : l’agent modifie tes fichiers et tu vois le résultat dans l’aperçu.'],
+      ['palette', 'Rechercher partout', 'Fichiers, symboles et commandes, au bout de ⌘P.'],
+      ['projets-nouveau', 'Projets', 'Tes projets, leur mémoire, et un nouveau projet à partir d’un modèle SwiftUI.']
     ],
     iphone: [
-      ['iphone-editor', 'Éditeur', 'Le code Swift et la pastille d’état, au pouce.'],
-      ['iphone-apercu', 'Aperçu SwiftUI', 'Ton app en direct, à un onglet du code.'],
-      ['iphone-completion', 'Complétion', 'ForEach, font, foregroundStyle : la complétion connaît SwiftUI.'],
-      ['iphone-git', 'Git', 'Les modifications, le message et Valider, en un écran.'],
-      ['iphone-pr-detail', 'Pull request', 'Relis une pull request et ses vérifications, où que tu sois.'],
-      ['iphone-assistant', 'Assistant', 'Que veux-tu construire ? Dis-le, ou dicte-le.'],
-      ['iphone-projets', 'Projets', 'Reprends ton projet là où tu l’as laissé.']
+      ['editor', 'Éditeur', 'Le code Swift et la pastille d’état, au pouce.'],
+      ['apercu', 'Aperçu SwiftUI', 'Ton app en direct, à un onglet du code.'],
+      ['completion', 'Complétion', 'ForEach, font, foregroundStyle : la complétion connaît SwiftUI.'],
+      ['git', 'Git', 'Les modifications, le message et Valider, en un écran.'],
+      ['pr-detail', 'Pull request', 'Relis une pull request et ses vérifications, où que tu sois.'],
+      ['assistant', 'Assistant', 'Que veux-tu construire ? Dis-le, ou dicte-le.'],
+      ['projets', 'Projets', 'Reprends ton projet là où tu l’as laissé.']
     ]
   };
 </script>
