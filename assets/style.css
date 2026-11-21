@@ -516,3 +516,9 @@ figure.mac { margin-top: 70px; }
   .duo .tablet.land { margin-right: 0; }
   .duo .phone { display: none; }
 }
+
+/* Offres Pro sur les pages /mac/ (colonne de texte plus étroite) */
+.doc .pricing .plan { padding: 28px 22px; }
+.doc .pricing .price { font-size: 34px; white-space: nowrap; }
+.doc .pricing .btn { margin-top: auto !important; justify-content: center; }
+.doc .pricing .price-note { margin-bottom: 22px; }
