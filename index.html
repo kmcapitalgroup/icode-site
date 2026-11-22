@@ -54,7 +54,7 @@
   <section class="hero">
     <div class="wrap">
       <img class="hero-icon" src="assets/icone.png" alt="Icône d’iCode" width="112" height="112">
-      <div><span class="pill"><b>NOUVEAU</b>Aperçu SwiftUI et vrai simulateur avec iCode Runner</span></div>
+      <div><span class="pill"><b>NOUVEAU</b>Connexion GitHub et publication de ton projet en un tap</span></div>
       <h1>Crée tes apps.<br><span class="gradient-text">Partout.</span></h1>
       <p class="lead">Le vrai environnement de développement Swift pour iPhone et iPad. Écris ton app en SwiftUI, regarde-la prendre vie à côté du code, lance-la dans le vrai simulateur et versionne-la avec Git. L’IA est en option : celle de ton appareil, gratuite, ou celle de ton choix.</p>
       <div class="hero-cta">
@@ -155,6 +155,7 @@
             <li>Choisis l’iPhone ou l’iPad à simuler, comme dans Xcode</li>
             <li>Erreurs de build et journaux renvoyés dans iCode, sur la bonne ligne</li>
             <li>Appairage par code à 6 chiffres, chiffré, sur ton réseau local</li>
+            <li>Bientôt : le terminal de ton Mac, ouvert depuis iCode</li>
           </ul>
           <p class="feature-link"><a href="runner/">Télécharger iCode Runner pour Mac →</a></p>
         </div>
@@ -217,7 +218,7 @@
       <div class="section-head center reveal">
         <span class="eyebrow">Git intégré</span>
         <h2>Git, comme sur ton Mac.</h2>
-        <p class="lead">Inspiré de GitHub Desktop. Coche tes fichiers, relis le diff, écris ton message, commit. Les branches, la fusion et tes pull requests sont à un tap.</p>
+        <p class="lead">Inspiré de GitHub Desktop. Coche tes fichiers, relis le diff, écris ton message, commit. Connecte-toi à GitHub en un tap, publie ton projet, et suis tes pull requests sans quitter iCode.</p>
       </div>
       <div class="feature">
         <div class="graph-card graph reveal" id="graph">
@@ -251,6 +252,8 @@
             <li>Commit avec résumé et description, amend, revert et stash</li>
             <li>Historique des commits et détail de chaque changement</li>
             <li>Créer, changer et fusionner des branches, résoudre les conflits</li>
+            <li>Se connecter avec GitHub : aucun jeton à créer ni à copier</li>
+            <li>Publier ton projet sur GitHub en un tap : dépôt créé, privé par défaut, et poussé</li>
             <li>Clone, fetch, pull et push vers GitHub, GitLab ou ton serveur</li>
             <li>Pull requests GitHub : description, vérifications, fichiers et conversation</li>
           </ul>
@@ -280,6 +283,7 @@
           <p class="lead">iCode embarque l’IA d’Apple, directement sur l’appareil : gratuite, privée, sans clé. Avec Pro, branche Claude, ChatGPT, Gemini, Mistral ou ton propre serveur. L’agent lit et modifie tes fichiers Swift, et tu valides chaque changement.</p>
           <ul class="checks">
             <li>Dicte ta demande à la voix, l’agent s’occupe du reste</li>
+            <li>Rien ne part vers une IA en ligne sans ton accord, révocable dans les Réglages</li>
             <li>Chaque réponse indique l’IA qui l’a écrite</li>
             <li>Clés vérifiées à l’enregistrement et rangées dans le Trousseau</li>
             <li>Requêtes envoyées directement au fournisseur, sans passer par nos serveurs</li>
@@ -434,10 +438,10 @@ Affiche    <span class="n">19.00</span></pre>
           <ul>
             <li>Tout ce qui est inclus dans Gratuit</li>
             <li>iCode Runner : le vrai simulateur depuis ton Mac</li>
-            <li>Clone, pull, push et pull requests GitHub</li>
+            <li>Clone, pull, push, publication et pull requests GitHub</li>
             <li>Claude, ChatGPT, Gemini, Mistral et ton serveur</li>
             <li>Bases de données SQLite, PostgreSQL et MySQL</li>
-            <li>Projets partagés avec iCloud et SharePlay</li>
+            <li>Coder à plusieurs avec iCloud et SharePlay</li>
           </ul>
           <a class="btn btn-primary" href="support/">Rejoindre la bêta TestFlight</a>
         </div>
@@ -454,7 +458,7 @@ Affiche    <span class="n">19.00</span></pre>
           <a class="btn btn-ghost" href="support/">Rejoindre la bêta</a>
         </div>
       </div>
-      <p class="pricing-foot">Prix de lancement TTC en France, achetés dans l’app. Abonnement renouvelé automatiquement, géré et résiliable depuis les réglages de ton compte Apple. L’achat à vie est un paiement unique. Avec ta propre clé, l’usage de l’IA est facturé par le fournisseur que tu choisis. iCode Runner demande un Mac avec Xcode.</p>
+      <p class="pricing-foot">Prix de lancement TTC en France. Sur iPhone et iPad, iCode Pro s’achète uniquement dans l’app, via l’App Store. Abonnement renouvelé automatiquement, géré et résiliable depuis les réglages de ton compte Apple. L’achat à vie est un paiement unique. Avec ta propre clé, l’usage de l’IA est facturé par le fournisseur que tu choisis. iCode Runner demande un Mac avec Xcode.</p>
     </div>
   </section>
 
@@ -476,7 +480,7 @@ Affiche    <span class="n">19.00</span></pre>
         </details>
         <details class="reveal">
           <summary>Faut-il une IA pour utiliser iCode ?</summary>
-          <p>Non. iCode est d’abord un environnement de développement et un client Git complets. Sur les appareils compatibles Apple Intelligence, l’IA d’Apple est incluse gratuitement et tourne sur l’appareil. Avec Pro, tu peux brancher Claude, ChatGPT, Gemini, Mistral, OpenRouter ou ton propre serveur avec ta clé.</p>
+          <p>Non. iCode est d’abord un environnement de développement et un client Git complets. Sur les appareils compatibles Apple Intelligence, l’IA d’Apple est incluse gratuitement et tourne sur l’appareil. Avec Pro, tu peux brancher Claude, ChatGPT, Gemini, Mistral, OpenRouter ou ton propre serveur avec ta clé. Avant le premier envoi à une IA en ligne, iCode te demande ton accord.</p>
         </details>
         <details class="reveal">
           <summary>Où sont mes projets et mes clés d’API ?</summary>
@@ -484,11 +488,15 @@ Affiche    <span class="n">19.00</span></pre>
         </details>
         <details class="reveal">
           <summary>Avec quels services Git iCode fonctionne-t-il ?</summary>
-          <p>GitHub, GitLab, Bitbucket, Gitea ou ton propre serveur : tout dépôt accessible en HTTPS. Pour un dépôt privé, tu utilises un jeton d’accès personnel. Les pull requests sont prises en charge pour GitHub.</p>
+          <p>GitHub, GitLab, Bitbucket, Gitea ou ton propre serveur : tout dépôt accessible en HTTPS. Avec GitHub, tu te connectes en un tap, sans jeton, et tu publies ton projet ou choisis un dépôt dans ta liste ; les pull requests sont prises en charge. Pour les autres serveurs, iCode ouvre la page de création du jeton et tu n’as plus qu’à le coller.</p>
         </details>
         <details class="reveal">
           <summary>Sur quels appareils iCode fonctionne-t-il ?</summary>
           <p>iPhone et iPad sous iOS 17 ou ultérieur. Liquid Glass, les Live Activities et la Dynamic Island profitent d’iOS 26, et l’IA d’Apple demande un appareil compatible Apple Intelligence. Une version Mac arrive bientôt.</p>
+        </details>
+        <details class="reveal">
+          <summary>Comment payer iCode Pro ?</summary>
+          <p>Sur iPhone et iPad, Pro s’achète dans l’app, via l’App Store : 4,99 € par mois, 39,99 € par an ou 99 € une fois, à vie. L’abonnement se gère et se résilie depuis les réglages de ton compte Apple, et un achat se restaure sur tes autres appareils avec le même compte.</p>
         </details>
         <details class="reveal">
           <summary>Comment rejoindre la bêta ?</summary>
