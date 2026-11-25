@@ -456,6 +456,15 @@ section { padding: 120px 0; position: relative; }
 .gallery-stage .frame.tablet.port { width: min(100%, 480px); }
 .gallery-stage .frame.phone.port { width: min(100%, 300px); }
 .gallery-stage .frame.phone.land { width: min(100%, 640px); border-radius: 40px; }
+/* Fenêtre Mac : barre de titre et boutons, sans cadre d'appareil */
+.gallery-stage .frame.mac-frame { width: min(100%, 980px); border-radius: 14px; padding: 30px 0 0; }
+.mac-frame, .macwin { background: radial-gradient(circle at 18px 15px, #FF5F57 5.5px, transparent 6px), radial-gradient(circle at 38px 15px, #FEBC2E 5.5px, transparent 6px), radial-gradient(circle at 58px 15px, #28C840 5.5px, transparent 6px), linear-gradient(#2a2d35, #23262d 30px, #0B0D12 30px); box-shadow: 0 50px 120px rgba(0,0,0,.7), 0 0 0 1px rgba(255,255,255,.14), 0 0 120px rgba(10,132,255,.15); }
+.gallery-stage .mac-frame .screen { border-radius: 0 0 13px 13px; }
+.seg-ori { transition: opacity .3s ease; }
+.seg-ori.is-off { opacity: .35; pointer-events: none; }
+.macwin { padding-top: 30px; }
+.macwin img { display: block; width: 100%; height: auto; }
+.mac-grid { margin-top: 56px; }
 .gallery-stage .frame.leaving { opacity: 0; transform: translateY(18px) scale(.94); filter: blur(6px); }
 .gallery-stage .frame.entering { opacity: 0; transform: translateY(-14px) scale(1.04); transition: none; }
 .gallery-stage .screen { position: relative; overflow: hidden; border-radius: inherit; transition: aspect-ratio .7s var(--ease); }
