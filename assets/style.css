@@ -456,6 +456,8 @@ section { padding: 120px 0; position: relative; }
 .gallery-stage .frame.tablet.port { width: min(100%, 480px); }
 .gallery-stage .frame.phone.port { width: min(100%, 300px); }
 .gallery-stage .frame.phone.land { width: min(100%, 640px); border-radius: 40px; }
+.gallery-stage .frame.macwin { width: min(100%, 980px); }
+.gallery-stage .macwin .screen { border-radius: 0 0 12px 12px; }
 .gallery-stage .frame.leaving { opacity: 0; transform: translateY(18px) scale(.94); filter: blur(6px); }
 .gallery-stage .frame.entering { opacity: 0; transform: translateY(-14px) scale(1.04); transition: none; }
 .gallery-stage .screen { position: relative; overflow: hidden; border-radius: inherit; transition: aspect-ratio .7s var(--ease); }
@@ -564,6 +566,9 @@ footer a { color: var(--text-2); }
 .sizes figcaption, figure.mac figcaption { margin-top: 18px; color: var(--text-2); font-size: 15px; font-weight: 600; }
 figure.mac { margin-top: 70px; }
 .macwin { width: min(100%, 900px); border-radius: 14px; overflow: hidden; box-shadow: 0 50px 120px rgba(0,0,0,.7), 0 0 0 1px rgba(255,255,255,.14), 0 0 120px rgba(10,132,255,.15); }
+.macwin { position: relative; padding-top: 28px; background: linear-gradient(180deg, #2b303b, #161920); }
+.macwin::before { content: ""; position: absolute; top: 10px; left: 14px; width: 10px; height: 10px; border-radius: 50%; background: #ff5f57; box-shadow: 17px 0 0 #febc2e, 34px 0 0 #28c840; }
+.macwin img { display: block; width: 100%; height: auto; border-radius: 0 0 14px 14px; }
 @media (max-width: 760px) {
   .sizes { grid-template-columns: 1fr 1fr; gap: 20px; }
   .sizes figure:nth-child(2) { grid-column: span 2; grid-row: 1; }

@@ -104,8 +104,8 @@
     var screen = frame.querySelector('.screen');
     var caption = document.getElementById('gallery-caption');
     var base = screen.querySelector('img').getAttribute('src').replace(/[^/]+$/, '');
-    var prefix = { ipad: { land: 'ipadl', port: 'ipad' }, iphone: { land: 'iphonel', port: 'iphone' } };
-    var state = { device: 'ipad', ori: { ipad: 'land', iphone: 'port' }, index: 0 };
+    var prefix = { ipad: { land: 'ipadl', port: 'ipad' }, iphone: { land: 'iphonel', port: 'iphone' }, mac: { land: 'mac', port: 'mac' } };
+    var state = { device: 'ipad', ori: { ipad: 'land', iphone: 'port', mac: 'land' }, index: 0 };
     var cache = {};
     var busy = Promise.resolve();
     var DWELL = 5200;
@@ -122,7 +122,7 @@
     };
     var wait = function (ms) { return new Promise(function (ok) { setTimeout(ok, reduced ? 0 : ms); }); };
     var frameClass = function () {
-      return 'frame ' + (state.device === 'ipad' ? 'tablet' : 'phone') + ' ' + state.ori[state.device];
+      return 'frame ' + ({ ipad: 'tablet', iphone: 'phone', mac: 'macwin' })[state.device] + ' ' + state.ori[state.device];
     };
     var place = function (im, alt, dir) {
       var old = screen.querySelector('img.is-on');
@@ -203,6 +203,8 @@
     var syncSeg = function () {
       segDevice.forEach(function (x) { x.setAttribute('aria-pressed', String(x.dataset.device === state.device)); });
       segOri.forEach(function (x) { x.setAttribute('aria-pressed', String(x.dataset.ori === state.ori[state.device])); });
+      // A Mac window has no orientation.
+      var ori = gallery.querySelector('.seg-ori'); if (ori) ori.style.display = state.device === 'mac' ? 'none' : '';
     };
     var build = function () {
       tabs.innerHTML = '';
