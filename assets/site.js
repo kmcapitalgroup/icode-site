@@ -19,6 +19,27 @@
     flatten();
   }
 
+  // Téléchargement direct : le bouton du DMG s'active tout seul dès qu'une release « mac-v… »
+  // de kmcapitalgroup/icode-site contient iCode.dmg.
+  var ready = function (a, href) {
+    a.href = href; a.removeAttribute('aria-disabled'); a.removeAttribute('tabindex');
+    var lbl = a.querySelector('.lbl');
+    if (lbl && a.dataset.ready) lbl.textContent = a.dataset.ready;
+  };
+  var dmg = document.querySelectorAll('a[data-dmg]');
+  if (dmg.length && window.fetch) {
+    fetch('https://api.github.com/repos/kmcapitalgroup/icode-site/releases?per_page=30').then(function (r) { return r.ok ? r.json() : []; }).then(function (list) {
+      var rel = (list || []).filter(function (x) { return !x.draft && /^mac-v/.test(x.tag_name); })[0];
+      var asset = rel && (rel.assets || []).filter(function (x) { return x.name === 'iCode.dmg'; })[0];
+      if (!asset) return;
+      var version = rel.tag_name.replace(/^mac-v/, '');
+      dmg.forEach(function (a) { ready(a, asset.browser_download_url); });
+      document.querySelectorAll('[data-version]').forEach(function (el) { el.textContent = version; });
+      document.querySelectorAll('[data-when-ready]').forEach(function (el) { el.hidden = false; });
+      document.querySelectorAll('[data-when-waiting]').forEach(function (el) { el.hidden = true; });
+    }).catch(function () {});
+  }
+
   // Halo qui suit le doigt ou la souris sur les cartes.
   document.querySelectorAll('.card').forEach(function (card) {
     card.addEventListener('pointermove', function (e) {
@@ -105,7 +126,7 @@
     var caption = document.getElementById('gallery-caption');
     var base = screen.querySelector('img').getAttribute('src').replace(/[^/]+$/, '');
     var prefix = { ipad: { land: 'ipadl', port: 'ipad' }, iphone: { land: 'iphonel', port: 'iphone' }, mac: { land: 'mac', port: 'mac' } };
-    var state = { device: 'ipad', ori: { ipad: 'land', iphone: 'port', mac: 'land' }, index: 0 };
+    var state = { device: data.ipad ? 'ipad' : Object.keys(data)[0], ori: { ipad: 'land', iphone: 'port', mac: 'land' }, index: 0 };
     var cache = {};
     var busy = Promise.resolve();
     var DWELL = 5200;
