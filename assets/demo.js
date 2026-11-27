@@ -1,6 +1,6 @@
-/* iCode — démo animée du hero, avec la nouvelle interface : le code occupe tout l'écran,
-   barre latérale, onglets et pastille d'état flottent en verre. On écrit une méthode Swift avec
-   l'autocomplétion et une erreur signalée en direct, puis on valide et on pousse depuis Git. */
+/* iCode — démo animée du hero, dans une fenêtre Mac. Deux projets se relaient : une app Swift
+   (on écrit une méthode avec l'autocomplétion, on lance les tests dans le terminal intégré, puis on
+   valide et on pousse depuis Git) et une API TypeScript (on écrit une route et on lance le serveur). */
 (function () {
   'use strict';
   var root = document.getElementById('demo');
@@ -9,19 +9,17 @@
   var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   var L = fr ? {
-    project: 'boutique', branch: 'feature/panier', files: 'EXPLORATEUR', search: 'Fichier, symbole, commande',
-    current: 'Branche actuelle', changes: 'Modifications · 3', summary: 'Résumé du commit', desc: 'Nouvelle méthode total(promo:).',
-    commit: 'Valider 3 fichiers', push: 'Pousser 2 commits', pushSub: 'origin, récupéré il y a 2 min',
-    message: 'Ajoute les codes promo au panier', committed: 'Commit a71e0d4', committedSub: 'sur feature/panier',
-    pushing: 'Push vers origin…', pushingSub: '3 commits', pushed: 'Poussé sur origin', pushedSub: 'feature/panier est à jour',
-    unused: '« code » n’est jamais lu', fix: 'Corriger', line: 'Ligne', col: 'col.'
+    files: 'EXPLORATEUR', search: 'Fichier, symbole, commande', current: 'Branche actuelle', changes: 'Modifications · 3',
+    summary: 'Résumé du commit', commit: 'Valider 3 fichiers', push: 'Pousser 2 commits', pushSub: 'origin, récupéré il y a 2 min',
+    committed: 'Commit a71e0d4', pushing: 'Push vers origin…', pushingSub: '3 commits', pushed: 'Poussé sur origin',
+    unused: '« code » n’est jamais lu', fix: 'Corriger', line: 'Ligne', col: 'col.', terminal: 'Terminal', run: 'Exécuter',
+    testsOk: 'Tests réussis', serverOn: 'Serveur lancé'
   } : {
-    project: 'shop', branch: 'feature/cart', files: 'EXPLORER', search: 'File, symbol, command',
-    current: 'Current branch', changes: 'Changes · 3', summary: 'Commit summary', desc: 'New total(promo:) method.',
-    commit: 'Commit 3 files', push: 'Push 2 commits', pushSub: 'origin, fetched 2 min ago',
-    message: 'Add promo codes to the cart', committed: 'Commit a71e0d4', committedSub: 'on feature/cart',
-    pushing: 'Pushing to origin…', pushingSub: '3 commits', pushed: 'Pushed to origin', pushedSub: 'feature/cart is up to date',
-    unused: '“code” is never read', fix: 'Fix', line: 'Ln', col: 'Col'
+    files: 'EXPLORER', search: 'File, symbol, command', current: 'Current branch', changes: 'Changes · 3',
+    summary: 'Commit summary', commit: 'Commit 3 files', push: 'Push 2 commits', pushSub: 'origin, fetched 2 min ago',
+    committed: 'Commit a71e0d4', pushing: 'Pushing to origin…', pushingSub: '3 commits', pushed: 'Pushed to origin',
+    unused: '“code” is never read', fix: 'Fix', line: 'Ln', col: 'Col', terminal: 'Terminal', run: 'Run',
+    testsOk: 'Tests passed', serverOn: 'Server running'
   };
 
   var I = {
@@ -32,13 +30,13 @@
     up: '<svg viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></svg>',
     check: '<svg viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></svg>',
     play: '<svg viewBox="0 0 24 24"><path d="M8 5l11 7-11 7z"/></svg>',
-    preview: '<svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 9h18"/></svg>',
+    term: '<svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="m7 9 3 3-3 3M12 15h5"/></svg>',
     spark: '<svg viewBox="0 0 24 24"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/></svg>',
     chev: '<svg viewBox="0 0 24 24" style="width:10px;height:10px"><path d="m9 6 6 6-6 6"/></svg>'
   };
 
-  // Coloration façon iCode (Swift).
-  var KW = /^(import|struct|class|enum|case|func|var|let|return|if|else|guard|throw|throws|try|in|self|some|private|static|mutating|nil)$/;
+  // Coloration façon iCode (Swift et TypeScript).
+  var KW = /^(import|from|export|default|struct|class|enum|case|func|function|var|let|const|return|if|else|guard|throw|throws|try|in|self|some|private|static|mutating|nil|async|await|new|type|interface)$/;
   function esc(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
   function hl(src) {
     if (/^\s*\/\//.test(src)) { var i = src.indexOf('//'); return esc(src.slice(0, i)) + '<span class="c">' + esc(src.slice(i)) + '</span>'; }
@@ -57,80 +55,123 @@
     return out;
   }
 
-  var base = [
-    'import Foundation',
-    '',
-    'struct Cart {',
-    '    var lines: [Line] = []',
-    '',
-    '    var subtotal: Double {',
-    '        lines.reduce(0) { $0 + $1.total }',
-    '    }',
-    '',
-    ''
+  var SW = ['#FF8A4C', 'S'], TS = ['#3178C6', 'TS'], JS = ['#F7DF1E', 'JS'], MD = ['#C9D1DC', 'M'], JN = ['#FFD23F', '{}'];
+  var scenes = [
+    {
+      lang: 'Swift', project: fr ? 'boutique' : 'shop', branch: fr ? 'feature/panier' : 'feature/cart',
+      crumbs: ['Models', 'Cart.swift', 'Cart'], scope: 'subtotal', scopeAfter: 'total(promo:)',
+      tabs: ['Cart.swift', 'Promo.swift', 'CartTests.swift'],
+      tree: [['d', 'Sources'], ['f', SW, 'Cart.swift', 'm', true], ['f', SW, 'Promo.swift', 'a'], ['d', 'Tests'], ['f', SW, 'CartTests.swift', 'm'], ['f', JS, 'Package.swift'], ['f', MD, 'README.md']],
+      base: ['import Foundation', '', 'struct Cart {', '    var lines: [Line] = []', '', '    var subtotal: Double {', '        lines.reduce(0) { $0 + $1.total }', '    }', '', ''],
+      typed: [
+        { text: '    func total(promo code: String) throws -> Double {', lens: true },
+        { text: '        guard let promo = Promo.all[code] else {', clear: true },
+        { text: '            throw CartError.unknownCode' },
+        { text: '        }' },
+        { text: '        return promo.ap', complete: { word: 'apply', list: [['f', '#A9B7FF', 'apply(to:)', 'Double'], ['p', '#6BDFFF', 'percent', 'Double'], ['p', '#6BDFFF', 'expires', 'Date'], ['p', '#6BDFFF', 'label', 'String']] }, after: '(to: subtotal)' },
+        { text: '    }' },
+        { text: '}' }
+      ],
+      cmd: 'swift test',
+      out: [
+        ['dim', 'Building for debugging...'],
+        ['dim', '[14/14] Compiling Boutique Cart.swift'],
+        ['', 'Build complete! (2.84s)'],
+        ['ok', '✔ CartTests.testPromoApplies (0.002s)'],
+        ['ok', '✔ CartTests.testUnknownCodeThrows (0.001s)'],
+        ['ok', 'Executed 6 tests, with 0 failures (0.012s)']
+      ],
+      done: [L.testsOk, '6/6 · 2,8 s'],
+      git: { message: fr ? 'Ajoute les codes promo au panier' : 'Add promo codes to the cart', desc: fr ? 'Nouvelle méthode total(promo:).' : 'New total(promo:) method.', files: [['Cart.swift', SW, '+7'], ['Promo.swift', SW, '+22'], ['CartTests.swift', SW, '+14']] }
+    },
+    {
+      lang: 'TypeScript', project: 'shop-api', branch: 'main',
+      crumbs: ['src', 'server.ts', 'app'], scope: 'app', scopeAfter: 'GET /api/products',
+      tabs: ['server.ts', 'db.ts', 'package.json'],
+      tree: [['d', 'src'], ['f', TS, 'server.ts', 'm', true], ['f', TS, 'db.ts'], ['f', JN, 'package.json'], ['f', JN, 'tsconfig.json'], ['f', MD, 'README.md']],
+      base: ['import express from \'express\'', 'import { db } from \'./db\'', '', 'const app = express()', 'app.use(express.json())', '', ''],
+      typed: [
+        { text: 'app.get(\'/api/products\', async (req, res) => {' },
+        { text: '  const items = await db.product.find', complete: { word: 'findMany', list: [['f', '#A9B7FF', 'findMany(args)', 'Promise<Product[]>'], ['f', '#A9B7FF', 'findFirst(args)', 'Promise<Product>'], ['f', '#A9B7FF', 'findUnique(args)', 'Promise<Product>'], ['f', '#A9B7FF', 'count(args)', 'Promise<number>']] }, after: '({ orderBy: { price: \'asc\' } })' },
+        { text: '  res.json(items)' },
+        { text: '})' },
+        { text: '' },
+        { text: 'app.listen(3000)' }
+      ],
+      cmd: 'npm run dev',
+      out: [
+        ['dim', '> shop-api@1.0.0 dev'],
+        ['dim', '> tsx watch src/server.ts'],
+        ['', ''],
+        ['ok', '➜  Server ready on http://localhost:3000'],
+        ['', 'GET /api/products 200 · 4 ms']
+      ],
+      done: [L.serverOn, 'localhost:3000']
+    }
   ];
-  var typed = [
-    { text: '    func total(promo code: String) throws -> Double {', lens: true },
-    { text: '        guard let promo = Promo.all[code] else {' },
-    { text: '            throw CartError.unknownCode' },
-    { text: '        }' },
-    { text: '        return promo.ap', complete: { word: 'apply', list: [['f', '#A9B7FF', 'apply(to:)', 'Double'], ['p', '#6BDFFF', 'percent', 'Double'], ['p', '#6BDFFF', 'expires', 'Date'], ['p', '#6BDFFF', 'label', 'String']] }, after: '(to: subtotal)' },
-    { text: '    }' },
-    { text: '}' }
-  ];
-  var finalLines = ['    func total(promo code: String) throws -> Double {', '        guard let promo = Promo.all[code] else {', '            throw CartError.unknownCode', '        }', '        return promo.apply(to: subtotal)', '    }', '}', ''];
 
-  function tag(bg, t) { return '<span class="tg" style="background:' + bg + '">' + t + '</span>'; }
+  function tag(t) { return '<span class="tg" style="background:' + t[0] + '">' + t[1] + '</span>'; }
   function seg(icon, on, badge) { return '<span' + (on ? ' class="on"' : '') + '>' + icon + (badge ? '<em>' + badge + '</em>' : '') + '</span>'; }
 
   root.innerHTML =
     '<div class="code"></div>' +
-    '<div class="crumbs">Models' + I.chev + 'Cart.swift' + I.chev + '<i>Cart</i>' + I.chev + '<b class="scope">subtotal</b></div>' +
+    '<div class="crumbs"></div>' +
     '<div class="minimap" aria-hidden="true"></div>' +
     '<aside class="side dg">' +
-      '<div class="proj"><span>' + L.project.charAt(0) + '</span><span><strong>' + L.project + '</strong><small class="dim row" style="gap:4px">' + L.branch + '</small></span></div>' +
+      '<div class="proj"><span class="pi"></span><span><strong class="pn"></strong><small class="dim row pb" style="gap:4px"></small></span></div>' +
       '<div class="seg4">' + seg(I.folder, true) + seg(I.search) + seg(I.branch, false, '3') + seg(I.warn) + '</div>' +
       '<div class="panes">' +
-        '<div class="pane" data-pane="files"><h6>' + L.files + '</h6>' +
-          '<div class="fi dim">' + I.folder.replace('<svg', '<svg style="color:#64B5FF"') + 'Models</div>' +
-          '<div class="fi in sel">' + tag('#FF8A4C', 'S') + 'Cart.swift<span class="bdg m">M</span></div>' +
-          '<div class="fi in">' + tag('#FF8A4C', 'S') + 'Promo.swift<span class="bdg a">A</span></div>' +
-          '<div class="fi dim">' + I.folder.replace('<svg', '<svg style="color:#64B5FF"') + 'Views</div>' +
-          '<div class="fi in">' + tag('#FF8A4C', 'S') + 'CartView.swift<span class="bdg m">M</span></div>' +
-          '<div class="fi in">' + tag('#FF8A4C', 'S') + 'ContentView.swift</div>' +
-          '<div class="fi">' + tag('#FF8A4C', 'S') + 'BoutiqueApp.swift</div>' +
-          '<div class="fi">' + tag('#C9D1DC', 'M') + 'README.md</div>' +
+        '<div class="pane" data-pane="files"><h6>' + L.files + '</h6><div class="tree"></div>' +
           '<div class="cta" style="margin-top:auto;justify-content:flex-start;padding:0 12px">' + I.up + '<span>' + L.push + '<small>' + L.pushSub + '</small></span></div>' +
         '</div>' +
         '<div class="pane hidden" data-pane="git">' +
-          '<div class="branch">' + I.branch.replace('<svg', '<svg style="color:#64B5FF"') + '<span><small>' + L.current + '</small><strong>' + L.branch + '</strong></span></div>' +
+          '<div class="branch">' + I.branch.replace('<svg', '<svg style="color:#64B5FF"') + '<span><small>' + L.current + '</small><strong class="gb"></strong></span></div>' +
           '<div class="seg4" style="margin-bottom:6px"><span class="on" style="font-size:10.5px;font-weight:600">' + L.changes + '</span></div>' +
-          '<div class="fi sel"><span class="ck">' + I.check + '</span>' + tag('#FF8A4C', 'S') + 'Cart.swift<span class="dstat"><b>+7</b></span></div>' +
-          '<div class="fi"><span class="ck">' + I.check + '</span>' + tag('#FF8A4C', 'S') + 'Promo.swift<span class="dstat"><b>+22</b></span></div>' +
-          '<div class="fi"><span class="ck">' + I.check + '</span>' + tag('#FF8A4C', 'S') + 'CartView.swift<span class="dstat"><b>+6</b><i>−1</i></span></div>' +
-          '<div class="msg"><strong class="msg-t" data-placeholder="' + L.summary + '"></strong><small>' + L.desc + '</small></div>' +
+          '<div class="gfiles"></div>' +
+          '<div class="msg"><strong class="msg-t" data-placeholder="' + L.summary + '"></strong><small class="msg-d"></small></div>' +
           '<div class="cta off commit">' + I.check + L.commit + '</div>' +
         '</div>' +
       '</div>' +
     '</aside>' +
     '<div class="topbar">' +
-      '<div class="dg"><span class="chip2 on"><i></i>Cart.swift</span><span class="chip2">Promo.swift</span><span class="chip2">CartView.swift</span></div>' +
+      '<div class="dg tabs"></div>' +
       '<div class="dg srch">' + I.search + L.search + '</div>' +
-      '<div class="dg acts"><span class="ib2 run">' + I.play + '</span><span class="ib2">' + I.preview + '</span><span class="ib2">' + I.spark + '</span></div>' +
+      '<div class="dg acts"><span class="ib2 run" title="' + L.run + '">' + I.play + '</span><span class="ib2">' + I.term + '</span><span class="ib2">' + I.spark + '</span></div>' +
     '</div>' +
     '<div class="popup"></div>' +
+    '<div class="term dg"><div class="term-bar">' + I.term + '<b>' + L.terminal + '</b><span class="term-tab on">zsh</span><span class="term-tab">+</span></div><div class="term-body"></div></div>' +
     '<div class="spill"><div class="dg">' +
-      '<span class="it">' + I.branch + L.branch + ' <span class="up">↑2</span></span><span class="sep"></span>' +
+      '<span class="it">' + I.branch + '<span class="sb"></span> <span class="up">↑2</span></span><span class="sep"></span>' +
       '<span class="it diag"></span><span class="sep"></span>' +
       '<span class="it dim pos"></span><span class="sep hide-sm"></span>' +
-      '<span class="it dim hide-sm">Swift</span>' +
+      '<span class="it dim hide-sm lang"></span>' +
     '</div></div>' +
     '<div class="toast"><span class="ring"></span><span><span class="t1"></span><small class="t2"></small></span></div>';
 
   var $ = function (s) { return root.querySelector(s); };
   var codeEl = $('.code'), popup = $('.popup'), pos = $('.pos'), diag = $('.diag'), toast = $('.toast');
-  var msg = $('.msg-t'), commitBtn = $('.commit'), scope = $('.scope'), mini = $('.minimap');
-  var lines = [], start = base.length - 1, lensOn = false;
+  var msg = $('.msg-t'), commitBtn = $('.commit'), mini = $('.minimap'), term = $('.term'), termBody = $('.term-body'), runBtn = $('.run');
+  var sc = scenes[0], lines = [], start = 0, lensOn = false, scopeEl;
+
+  function setScene(s) {
+    sc = s; start = s.base.length - 1;
+    $('.crumbs').innerHTML = s.crumbs[0] + I.chev + s.crumbs[1] + I.chev + '<i>' + s.crumbs[2] + '</i>' + I.chev + '<b class="scope"></b>';
+    scopeEl = $('.scope'); scopeEl.textContent = s.scope;
+    $('.pi').textContent = s.project.charAt(0).toUpperCase();
+    $('.pn').textContent = s.project; $('.pb').textContent = s.branch; $('.gb').textContent = s.branch; $('.sb').textContent = s.branch;
+    $('.lang').textContent = s.lang;
+    $('.tabs').innerHTML = s.tabs.map(function (t, i) { return '<span class="chip2' + (i === 0 ? ' on' : '') + '">' + (i === 0 ? '<i></i>' : '') + t + '</span>'; }).join('');
+    $('.tree').innerHTML = s.tree.map(function (n) {
+      if (n[0] === 'd') return '<div class="fi dim">' + I.folder.replace('<svg', '<svg style="color:#64B5FF"') + n[1] + '</div>';
+      return '<div class="fi in' + (n[4] ? ' sel' : '') + '">' + tag(n[1]) + n[2] + (n[3] ? '<span class="bdg ' + n[3] + '">' + n[3].toUpperCase() + '</span>' : '') + '</div>';
+    }).join('');
+    if (s.git) {
+      $('.gfiles').innerHTML = s.git.files.map(function (f, i) {
+        return '<div class="fi' + (i === 0 ? ' sel' : '') + '"><span class="ck">' + I.check + '</span>' + tag(f[1]) + f[0] + '<span class="dstat"><b>' + f[2] + '</b></span></div>';
+      }).join('');
+      $('.msg-d').textContent = s.git.desc;
+    }
+  }
 
   function setDiag(n) {
     diag.className = 'it diag ' + (n ? 'warn' : 'ok');
@@ -173,7 +214,7 @@
   }
   function showPopup(list) {
     popup.innerHTML = list.map(function (it, i) {
-      return '<div' + (i === 0 ? ' class="on"' : '') + '>' + tag(it[1], it[0]) + it[2] + '<em>' + it[3] + '</em></div>';
+      return '<div' + (i === 0 ? ' class="on"' : '') + '>' + tag([it[1], it[0]]) + it[2] + '<em>' + it[3] + '</em></div>';
     }).join('');
     var caret = codeEl.querySelector('.caret');
     if (caret) {
@@ -195,21 +236,29 @@
     root.querySelectorAll('.pane').forEach(function (p) { p.classList.toggle('hidden', p.dataset.pane !== name); });
     root.querySelectorAll('.side > .seg4 span').forEach(function (s, i) { s.classList.toggle('on', name === 'git' ? i === 2 : i === 0); });
   }
+  function termLine(cls, html) {
+    var d = document.createElement('div');
+    d.className = 'tl ' + cls; d.innerHTML = html || '&nbsp;';
+    termBody.appendChild(d);
+  }
 
-  function script() {
+  function script(s) {
     var steps = [];
+    setScene(s); // fixe « start » avant de construire les étapes de frappe
     steps.push(step(function () {
-      lines = base.slice(); lensOn = false; pane('files'); msg.textContent = '';
+      lines = s.base.slice(); lensOn = false; pane('files'); msg.textContent = '';
       commitBtn.className = 'cta off commit'; toast.classList.remove('show'); popup.classList.remove('show');
-      scope.textContent = 'subtotal'; setDiag(0); render(start, 0);
+      term.classList.remove('show'); termBody.innerHTML = '';
+      setDiag(0); render(start, 0);
     }));
     steps.push(wait(800));
-    typed.forEach(function (t, k) {
+    s.typed.forEach(function (t, k) {
       var li = start + k;
       steps.push(step(function () { if (k > 0) lines.splice(li, 0, ''); render(li, 0); }));
-      steps.push(typeInto(li, '', t.text, 36));
-      if (t.lens) steps.push(step(function () { lensOn = true; scope.textContent = 'total(promo:)'; setDiag(1); render(li, lines[li].length); }));
-      if (k === 1) steps.push(step(function () { lensOn = false; setDiag(0); render(li, lines[li].length); }));
+      steps.push(typeInto(li, '', t.text, 34));
+      if (t.lens) steps.push(step(function () { lensOn = true; scopeEl.textContent = s.scopeAfter; setDiag(1); render(li, lines[li].length); }));
+      if (k === 0 && !t.lens) steps.push(step(function () { scopeEl.textContent = s.scopeAfter; }));
+      if (t.clear) steps.push(step(function () { lensOn = false; setDiag(0); render(li, lines[li].length); }));
       if (t.complete) {
         var c = t.complete;
         steps.push(step(function () { showPopup(c.list); }));
@@ -219,46 +268,75 @@
           lines[li] = t.text.replace(/[\w$]+$/, '') + c.word; render(li, lines[li].length);
         }));
         steps.push(wait(240));
-        steps.push(function (next) { typeInto(li, lines[li], lines[li] + t.after, 32)(next); });
+        steps.push(function (next) { typeInto(li, lines[li], lines[li] + t.after, 30)(next); });
       }
-      steps.push(wait(160));
+      steps.push(wait(140));
     });
-    steps.push(wait(900));
-    steps.push(step(function () { pane('git'); }));
     steps.push(wait(700));
+    // ▶︎ Exécuter : le terminal intégré monte et lance la commande du projet.
+    steps.push(step(function () { runBtn.classList.add('pressed'); }));
+    steps.push(wait(180));
+    steps.push(step(function () { runBtn.classList.remove('pressed'); term.classList.add('show'); termLine('cmd', '<i>~/' + s.project + '</i> <b>❯</b> '); }));
+    steps.push(wait(350));
     steps.push(function (next) {
-      var n = 0;
+      var el = termBody.lastChild, n = 0, base = el.innerHTML;
       (function tick() {
         if (!running) return;
-        msg.textContent = L.message.slice(0, n);
-        if (n++ < L.message.length) timer = setTimeout(tick, 40); else next();
+        el.innerHTML = base + esc(s.cmd.slice(0, n));
+        if (n++ < s.cmd.length) timer = setTimeout(tick, 55); else next();
       })();
     });
-    steps.push(step(function () { commitBtn.classList.remove('off'); }));
-    steps.push(wait(600));
-    steps.push(step(function () { commitBtn.classList.add('pressed'); }));
-    steps.push(wait(160));
-    steps.push(step(function () { commitBtn.classList.remove('pressed'); showToast(L.committed, L.committedSub, true); }));
-    steps.push(wait(1500));
-    steps.push(step(function () { showToast(L.pushing, L.pushingSub, false); }));
-    steps.push(wait(1500));
-    steps.push(step(function () { showToast(L.pushed, L.pushedSub, true); }));
-    steps.push(wait(2200));
+    s.out.forEach(function (o, i) {
+      steps.push(wait(i === 0 ? 400 : 260 + Math.random() * 260));
+      steps.push(step(function () { termLine(o[0], esc(o[1])); }));
+    });
+    steps.push(step(function () { showToast(s.done[0], s.done[1], true); }));
+    steps.push(wait(2000));
     steps.push(step(function () { toast.classList.remove('show'); }));
-    steps.push(wait(800));
+    if (s.git) {
+      steps.push(wait(400));
+      steps.push(step(function () { term.classList.remove('show'); pane('git'); }));
+      steps.push(wait(700));
+      steps.push(function (next) {
+        var n = 0;
+        (function tick() {
+          if (!running) return;
+          msg.textContent = s.git.message.slice(0, n);
+          if (n++ < s.git.message.length) timer = setTimeout(tick, 40); else next();
+        })();
+      });
+      steps.push(step(function () { commitBtn.classList.remove('off'); }));
+      steps.push(wait(600));
+      steps.push(step(function () { commitBtn.classList.add('pressed'); }));
+      steps.push(wait(160));
+      steps.push(step(function () { commitBtn.classList.remove('pressed'); showToast(L.committed, s.branch, true); }));
+      steps.push(wait(1400));
+      steps.push(step(function () { showToast(L.pushing, L.pushingSub, false); }));
+      steps.push(wait(1400));
+      steps.push(step(function () { showToast(L.pushed, s.branch, true); }));
+      steps.push(wait(2000));
+      steps.push(step(function () { toast.classList.remove('show'); }));
+    } else {
+      steps.push(wait(1400));
+    }
+    steps.push(wait(700));
     return steps;
   }
 
-  var inView = false;
-  function loop() { run(script(), function () { if (running) loop(); }); }
+  var inView = false, which = 0;
+  function loop() { run(script(scenes[which]), function () { which = (which + 1) % scenes.length; if (running) loop(); }); }
   function start_() { if (running) return; running = true; loop(); }
   function stop() { running = false; clearTimeout(timer); }
 
-  lines = base.slice(); setDiag(0);
+  setScene(scenes[0]);
+  lines = sc.base.slice(); setDiag(0);
   if (reduced) {
-    lines = base.slice(0, start).concat(finalLines);
-    scope.textContent = 'total(promo:)';
+    lines = sc.base.slice(0, start).concat(sc.typed.map(function (t) { return t.complete ? t.text.replace(/[\w$]+$/, '') + t.complete.word + t.after : t.text; }), ['']);
+    scopeEl.textContent = sc.scopeAfter;
     render(lines.length - 1, 0);
+    term.classList.add('show');
+    termLine('cmd', '<i>~/' + sc.project + '</i> <b>❯</b> ' + esc(sc.cmd));
+    sc.out.forEach(function (o) { termLine(o[0], esc(o[1])); });
     return;
   }
   render(start, 0);
